@@ -1,5 +1,5 @@
 <script setup>
-import ElementRenderer from './ElementRenderer.vue';
+import Renderer from './ElementRenderer.vue';
 const props = defineProps({
   elementsArray: Array
 });
