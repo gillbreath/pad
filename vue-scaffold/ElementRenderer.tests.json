@@ -1,0 +1,29 @@
+[
+  {
+    "elementType": "a",
+    "assertions": [
+      "be.visible",
+      ["have.class", "foo"]
+    ]
+  },
+  {
+    "elementType": "div",
+    "assertions": [
+      "be.visible",
+      ["have.class", "bar"]
+    ]
+  },
+  {
+    "elementType": "header",
+    "assertions": [
+      "be.visible"
+    ]
+  },
+  {
+    "elementType": "h1",
+    "assertions": [
+      "be.visible",
+      ["have.class", "baz"]
+    ]
+  }
+]

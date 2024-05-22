@@ -17,7 +17,7 @@ const props = defineProps({
     <header v-if="eachEl.elementType === 'header'">
       <Renderer v-if="eachEl.children" :elements-array="eachEl.children" />
     </header>
-    <h1 v-if="eachEl.elementType === 'h1'">
+    <h1 v-if="eachEl.elementType === 'h1'" :class="eachEl.class">
       {{ eachEl.innerHtml }}
       <Renderer v-if="eachEl.children" :elements-array="eachEl.children" />
     </h1>
