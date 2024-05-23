@@ -1,4 +1,4 @@
-[
+export default [
   {
     "elementType": "header",
     "children": [

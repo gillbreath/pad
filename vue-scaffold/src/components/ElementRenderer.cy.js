@@ -1,5 +1,5 @@
 import ElementRenderer from './ElementRenderer.vue';
-import testSiteSchema from '../../../siteSchema.json';
+import testElementRendererSchema from '../../../pad/ElementRenderer.tests.pad.js';
 import ElementRendererTests from '../../ElementRenderer.tests.json';
 
 describe('<ElementRenderer />', () => {
@@ -10,7 +10,7 @@ describe('<ElementRenderer />', () => {
   it('mounts multiple elements', () => {
     cy.mount(ElementRenderer, {
       props: {
-        elementsArray: testSiteSchema
+        elementsArray: testElementRendererSchema
       }
     });
 
