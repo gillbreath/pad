@@ -30,6 +30,7 @@ export default [
           },
           {
             "elementType": "h2",
+            "class": "keedl",
             "innerHtml": "heading two text"
           }
         ]
@@ -51,7 +52,8 @@ export default [
                 "class": "some-img-class",
                 "src": "src"
               }
-            ]
+            ],
+            "innerHtml": "li text"
           }
         ]
       }

@@ -3,6 +3,7 @@
     "elementType": "a",
     "assertions": [
       "be.visible",
+      ["have.attr", "href", "#"],
       ["have.class", "foo"]
     ]
   },
@@ -24,6 +25,47 @@
     "assertions": [
       "be.visible",
       ["have.class", "baz"]
+    ]
+  },
+  {
+    "elementType": "h2",
+    "assertions": [
+      "be.visible",
+      ["have.class", "keedl"]
+    ]
+  },
+  {
+    "elementType": "img",
+    "assertions": [
+      "be.visible",
+      ["have.attr", "alt", "img alt text"],
+      ["have.attr", "src", "src"],
+      ["have.class", "some-img-class"]
+    ]
+  },
+  {
+    "elementType": "li",
+    "assertions": [
+      "be.visible",
+      ["include.text", "li text"]
+    ]
+  },
+  {
+    "elementType": "nav",
+    "assertions": [
+      "be.visible"
+    ]
+  },
+  {
+    "elementType": "section",
+    "assertions": [
+      "be.visible"
+    ]
+  },
+  {
+    "elementType": "ul",
+    "assertions": [
+      "be.visible"
     ]
   }
 ]

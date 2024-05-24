@@ -21,7 +21,7 @@ const props = defineProps({
       {{ eachEl.innerHtml }}
       <Renderer v-if="eachEl.children" :elements-array="eachEl.children" />
     </h1>
-    <h2 v-if="eachEl.elementType === 'h2'">
+    <h2 v-if="eachEl.elementType === 'h2'" :class="eachEl.class">
       {{ eachEl.innerHtml }}
       <Renderer v-if="eachEl.children" :elements-array="eachEl.children" />
     </h2>
