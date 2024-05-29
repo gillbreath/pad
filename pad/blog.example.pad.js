@@ -30,22 +30,22 @@ const siteSchema = {
     },
     music: {
       content: [
-        { 
+        {
           elementType: 'h2',
           innerHtml: 'music',
         },
-        { 
+        {
           elementType: 'ul',
           children: [
-            { 
+            {
               elementType: 'li',
               innerHtml: 'youtbue',
             },
-            { 
+            {
               elementType: 'li',
               innerHtml: 'bandcamp',
             },
-            { 
+            {
               elementType: 'li',
               innerHtml: 'etc',
             },
@@ -56,22 +56,22 @@ const siteSchema = {
     writing: {
       title: 'Writing',
       content: [
-        { 
+        {
           elementType: 'h2',
           innerHtml: 'writing',
         },
-        { 
+        {
           elementType: 'ul',
           children: [
-            { 
+            {
               elementType: 'li',
               innerHtml: 'article',
             },
-            { 
+            {
               elementType: 'li',
               innerHtml: 'essay',
             },
-            { 
+            {
               elementType: 'li',
               innerHtml: 'contact',
             },
@@ -79,6 +79,24 @@ const siteSchema = {
         }
       ],
     },
+  },
+  dataEntities: {
+    articles: {
+      fields: [
+        {
+          name: 'title'
+        },
+        {
+          name: 'category'
+        },
+        {
+          name: 'author'
+        },
+        {
+          name: 'text'
+        },
+      ]
+    }
   },
 };
 
