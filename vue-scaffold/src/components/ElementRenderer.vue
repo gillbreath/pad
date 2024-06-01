@@ -1,12 +1,15 @@
 <script setup>
 import Renderer from './ElementRenderer.vue';
+import DataEntityRenderer from './DataEntityRenderer.vue';
 const props = defineProps({
+  singleElement: Object,
   elementsArray: Array
 });
 </script>
 
 <template>
-  <template v-for="eachEl in props.elementsArray">
+  <template v-for="eachEl in (props.elementsArray || [props.singleElement])">
+    <DataEntityRenderer v-if="eachEl.elementType === 'dataEntity'" :data-entity="eachEl" />
     <a v-if="eachEl.elementType === 'a'" :class="eachEl.class" :href="eachEl.href">
       {{ eachEl.innerHtml }}
       <Renderer v-if="eachEl.children" :elements-array="eachEl.children" />
