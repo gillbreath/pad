@@ -17,7 +17,10 @@ const dataEntities = {
         slug: 'article-content',
         defaultValue: ''
       },
-    }
+    },
+    preLoad: [
+      'one', 'two', { innerHtml: (entity) => entity.value, value: 'thr33', children: [{ elementType: 'h2', innerHtml: 'non' }] }
+    ]
   },
   categories: {
     fields: {
@@ -26,6 +29,9 @@ const dataEntities = {
         defaultValue: ''
       },
     },
+    preLoad: [
+      'Aa', 'Bb', { innerHtml: (entity) => entity.value, value: 'Cc', children: [{ elementType: 'h2', innerHtml: 'diff' }] }
+    ]
   }
 };
 

@@ -17,7 +17,7 @@ const props = defineProps({
 
 <template>
   <ul v-if="props.dataEntity.renderType === 'ul'">
-    <li v-for="eachEntity in globalStores['articles'].dataEntityCollection">
+    <li v-for="eachEntity in globalStores['articles'].collection">
       {{ (eachEntity.innerHtml) ? eachEntity.innerHtml(eachEntity) : eachEntity }}
       <Renderer v-if="eachEntity.children" :elements-array="eachEntity.children" />
     </li>
