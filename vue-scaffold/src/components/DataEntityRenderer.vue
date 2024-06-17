@@ -10,16 +10,15 @@ Object.entries(useGlobalStores).forEach(eachStore => {
 console.log('t', globalStores)
 
 const props = defineProps({
-  dataEntity: Array
+  dataEntity: Object
 });
 
 </script>
 
 <template>
-    <h1>here comes success</h1>
   <ul v-if="props.dataEntity.renderType === 'ul'">
-    <li v-for="eachEntity in globalStores['articles']">
-      {{ 'eachEntity.renderFunction' }}
+    <li v-for="eachEntity in globalStores['articles'].dataEntityCollection">
+      {{ (eachEntity.innerHtml) ? eachEntity.innerHtml(eachEntity) : eachEntity }}
       <Renderer v-if="eachEntity.children" :elements-array="eachEntity.children" />
     </li>
   </ul>
