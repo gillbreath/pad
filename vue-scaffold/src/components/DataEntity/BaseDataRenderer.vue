@@ -1,6 +1,6 @@
 <script setup>
-import Renderer from './ElementRenderer.vue';
-import useGlobalStores from '../stores/GlobalStores.js';
+import Renderer from '../ElementRenderer.vue';
+import useGlobalStores from '../../stores/GlobalStores.js';
 
 const globalStores = {};
 Object.entries(useGlobalStores).forEach(eachStore => {

@@ -1,6 +1,6 @@
 <script setup>
 import ElementRenderer from './ElementRenderer.vue';
-import DataEntityRenderer from './DataEntityRenderer.vue';
+import DataEntityRenderer from './DataEntity/BaseDataRenderer.vue';
 const props = defineProps({
   elementsArray: Array
 });
