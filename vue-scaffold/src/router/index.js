@@ -30,7 +30,7 @@ Object.entries(mainPad.dataEntities).forEach(dataEntity => {
         },
         {
           elementType: 'dataEntity',
-          dataEntity: dataEntityKey,
+          dataEntityKey,
           renderType: 'ul'
         }
       ]
