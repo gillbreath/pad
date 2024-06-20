@@ -3,8 +3,15 @@ import testElementRendererSchema from '../../../pad/ElementRenderer.tests.pad.js
 import ElementRendererTests from '../../ElementRenderer.tests.json';
 
 describe('<ElementRenderer />', () => {
-  it('mounts', () => {
-    cy.mount(ElementRenderer);
+  it('mounts a single element', () => {
+    cy.mount(ElementRenderer, {
+      props: {
+        singleElement: {
+          elementType: 'h1',
+          innerHtml: 'test'
+        }
+      }
+    });
   });
 
   it('mounts multiple elements', () => {

@@ -5,12 +5,12 @@ describe('Element Renderer Test', () => {
     cy.visit('/test');
 
     ElementRendererTests.forEach(e => {
-      const eachElement = cy.get(e.elementType);
+      cy.get(e.elementType).as('eachElement');
       e.assertions.forEach(a => {
         if (Array.isArray(a)) {
-          eachElement.should(...a);
+          cy.get('@eachElement').should(...a);
         } else {
-          eachElement.should(a);
+          cy.get('@eachElement').should(a);
         }
       });
     });

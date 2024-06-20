@@ -58,7 +58,7 @@ const pageRoutes = {
         children: [
           {
             elementType: 'dataEntity',
-            dataEntity: 'articles',
+            dataEntityKey: 'articles',
             renderType: 'ul'
           }
         ],

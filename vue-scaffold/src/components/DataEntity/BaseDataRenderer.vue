@@ -7,12 +7,10 @@ Object.entries(useGlobalStores).forEach(eachStore => {
   const [eachStoreKey, eachStoreValue] = eachStore;
   globalStores[eachStoreKey] = eachStoreValue()
 });
-console.log('t', globalStores)
 
 const props = defineProps({
   dataEntity: Object
 });
-
 </script>
 
 <template>

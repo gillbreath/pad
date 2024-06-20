@@ -5,7 +5,7 @@ describe('Smoke Test', () => {
     Object.entries(mainPad.pageRoutes).forEach(pageRoute => {
       const [pageRouteKey, pageRouteValue] = pageRoute;
       cy.visit(pageRouteValue.path || '/' + pageRouteKey);
-      cy.get(pageRouteValue.content[0].elementType);
+      cy.get(pageRouteValue.children[0].elementType);
     });
   });
 });
