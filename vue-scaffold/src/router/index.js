@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import Renderer from '../components/Renderer.vue'
+import PadRenderer from '../components/PadRenderer.vue'
 import mainPad from '../../../main.pad.js'
 
 const routes = [];
@@ -9,7 +9,7 @@ Object.entries(mainPad.pageRoutes).forEach(pageRoute => {
   const [pageRouteKey, pageRouteValue] = pageRoute;
   routes.push({
     path: pageRouteValue.path || '/' + pageRouteKey,
-    component: Renderer,
+    component: PadRenderer,
     props: {
       elementsArray: pageRouteValue.children
     },
@@ -18,10 +18,10 @@ Object.entries(mainPad.pageRoutes).forEach(pageRoute => {
 
 // CRUD routes for each dataEntity
 Object.entries(mainPad.dataEntities).forEach(dataEntity => {
-  const [dataEntityKey, dataEntityValue] = dataEntity;
+  const [dataEntityKey] = dataEntity;
   routes.push({
     path: '/data-entities/' + dataEntityKey,
-    component: Renderer,
+    component: PadRenderer,
     props: {
       elementsArray: [
         {
