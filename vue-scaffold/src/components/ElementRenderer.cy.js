@@ -1,3 +1,5 @@
+/* global describe, it, cy */
+
 import ElementRenderer from './ElementRenderer.vue';
 import testElementRendererSchema from '../../../pad/ElementRenderer.tests.pad.js';
 import ElementRendererTests from '../../ElementRenderer.tests.json';
