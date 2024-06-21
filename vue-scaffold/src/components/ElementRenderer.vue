@@ -8,14 +8,14 @@ const props = defineProps({
   elementsArray: Array
 });
 if (props.elementsArray) {
-  props.elementsArray.forEach(e => {
+  props.elementsArray.forEach((e) => {
     e.loopKey = LoopKey();
   });
 }
 </script>
 
 <template>
-  <template v-for="eachEl in (props.elementsArray || [props.singleElement])" :key="eachEl.loopKey">
+  <template v-for="eachEl in props.elementsArray || [props.singleElement]" :key="eachEl.loopKey">
     <DataEntityRenderer v-if="eachEl.elementType === 'dataEntity'" :data-entity="eachEl" />
     <a v-if="eachEl.elementType === 'a'" :class="eachEl.class" :href="eachEl.href">
       {{ eachEl.innerHtml }}

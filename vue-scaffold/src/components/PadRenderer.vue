@@ -6,7 +6,7 @@ import LoopKey from '../loopKey.js';
 const props = defineProps({
   elementsArray: Array
 });
-props.elementsArray.forEach(e => {
+props.elementsArray.forEach((e) => {
   e.loopKey = LoopKey();
 });
 </script>

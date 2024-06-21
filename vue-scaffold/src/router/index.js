@@ -1,23 +1,23 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import PadRenderer from '../components/PadRenderer.vue'
-import mainPad from '../../../main.pad.js'
+import PadRenderer from '../components/PadRenderer.vue';
+import mainPad from '../../../main.pad.js';
 
 const routes = [];
 
 // pageRoutes
-Object.entries(mainPad.pageRoutes).forEach(pageRoute => {
+Object.entries(mainPad.pageRoutes).forEach((pageRoute) => {
   const [pageRouteKey, pageRouteValue] = pageRoute;
   routes.push({
     path: pageRouteValue.path || '/' + pageRouteKey,
     component: PadRenderer,
     props: {
       elementsArray: pageRouteValue.children
-    },
+    }
   });
 });
 
 // CRUD routes for each dataEntity
-Object.entries(mainPad.dataEntities).forEach(dataEntity => {
+Object.entries(mainPad.dataEntities).forEach((dataEntity) => {
   const [dataEntityKey] = dataEntity;
   routes.push({
     path: '/data-entities/' + dataEntityKey,
@@ -26,7 +26,7 @@ Object.entries(mainPad.dataEntities).forEach(dataEntity => {
       elementsArray: [
         {
           elementType: 'h1',
-          innerHtml: dataEntityKey,
+          innerHtml: dataEntityKey
         },
         {
           elementType: 'dataEntity',
@@ -38,10 +38,9 @@ Object.entries(mainPad.dataEntities).forEach(dataEntity => {
   });
 });
 
-
 const router = createRouter({
   history: createWebHistory(),
-  routes,
+  routes
 });
 
 export default router;

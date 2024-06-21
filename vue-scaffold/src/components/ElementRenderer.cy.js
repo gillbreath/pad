@@ -23,9 +23,9 @@ describe('<ElementRenderer />', () => {
       }
     });
 
-    ElementRendererTests.forEach(e => {
+    ElementRendererTests.forEach((e) => {
       const eachElement = cy.get(e.elementType);
-      e.assertions.forEach(a => {
+      e.assertions.forEach((a) => {
         if (Array.isArray(a)) {
           eachElement.should(...a);
         } else {
