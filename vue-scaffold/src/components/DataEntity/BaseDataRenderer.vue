@@ -1,13 +1,6 @@
 <script setup>
 import Renderer from '../ElementRenderer.vue';
-import useGlobalStores from '../../stores/GlobalStores.js';
 import LoopKey from '../../loopKey.js';
-
-const globalStores = {};
-Object.entries(useGlobalStores).forEach((eachStore) => {
-  const [eachStoreKey, eachStoreValue] = eachStore;
-  globalStores[eachStoreKey] = eachStoreValue();
-});
 
 const props = defineProps({
   dataEntity: Object
@@ -22,7 +15,7 @@ if (props.elementsArray) {
 <template>
   <ul v-if="props.dataEntity.renderType === 'ul'">
     <li
-      v-for="eachEntity in globalStores[props.dataEntity.dataEntityKey].collection"
+      v-for="eachEntity in $globalStores[props.dataEntity.dataEntityKey].collection"
       :key="eachEntity.loopKey"
     >
       {{ eachEntity.innerHtml ? eachEntity.innerHtml(eachEntity) : eachEntity }}
