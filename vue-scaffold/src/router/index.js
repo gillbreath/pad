@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import PadRenderer from '../components/PadRenderer.vue';
+import DataEntityList from '../components/DataEntityList.vue';
 import CrudDataRenderer from '../components/DataEntity/CrudDataRenderer.vue';
 import mainPad from '../../../main.pad.js';
 
@@ -18,10 +19,16 @@ Object.entries(mainPad.pageRoutes).forEach((pageRoute) => {
 });
 
 // CRUD routes for each dataEntity
+const dataEntityPath = '/data-entities/';
+
+routes.push({
+  path: dataEntityPath,
+  component: DataEntityList
+});
 Object.entries(mainPad.dataEntities).forEach((dataEntity) => {
   const [dataEntityKey] = dataEntity;
   routes.push({
-    path: '/data-entities/' + dataEntityKey,
+    path: dataEntityPath + dataEntityKey,
     component: CrudDataRenderer,
     props: {
       dataEntityKey
