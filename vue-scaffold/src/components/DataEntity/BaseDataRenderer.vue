@@ -24,7 +24,10 @@ if (props.elementsArray) {
       <span v-if="props.crudMode === true">
         <a href="#" @click="$globalStores[props.dataEntity.dataEntityKey].remove(index)">delete</a>
       </span>
-      <Renderer v-if="eachEntity.children && props.renderChildren === true" :elements-array="eachEntity.children" />
+      <Renderer
+        v-if="eachEntity.children && props.renderChildren === true"
+        :elements-array="eachEntity.children"
+      />
     </li>
   </ul>
 </template>
