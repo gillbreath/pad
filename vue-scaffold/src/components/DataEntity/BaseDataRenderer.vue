@@ -3,7 +3,8 @@ import Renderer from '../ElementRenderer.vue';
 import LoopKey from '../../loopKey.js';
 
 const props = defineProps({
-  dataEntity: Object
+  dataEntity: Object,
+  renderChildren: Boolean
 });
 if (props.elementsArray) {
   props.elementsArray.forEach((e) => {
@@ -19,7 +20,7 @@ if (props.elementsArray) {
       :key="eachEntity.loopKey"
     >
       {{ eachEntity.innerHtml ? eachEntity.innerHtml(eachEntity) : eachEntity }}
-      <Renderer v-if="eachEntity.children" :elements-array="eachEntity.children" />
+      <Renderer v-if="eachEntity.children && props.renderChildren === true" :elements-array="eachEntity.children" />
     </li>
   </ul>
 </template>
