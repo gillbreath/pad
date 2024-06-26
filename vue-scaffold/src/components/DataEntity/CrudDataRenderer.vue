@@ -11,9 +11,7 @@ const dataEntity = {
 </script>
 
 <template>
-  <RouterLink :to="'/data-entities/'">
-    &lt; data-entities
-  </RouterLink>
+  <RouterLink :to="'/data-entities/'"> &lt; data-entities </RouterLink>
   <h1>{{ props.dataEntityKey }}</h1>
   <BaseDataRenderer :data-entity="dataEntity" />
 </template>
