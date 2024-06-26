@@ -3,6 +3,7 @@ import Renderer from '../ElementRenderer.vue';
 import LoopKey from '../../loopKey.js';
 
 const props = defineProps({
+  crudMode: Boolean,
   dataEntity: Object,
   renderChildren: Boolean
 });
@@ -16,10 +17,13 @@ if (props.elementsArray) {
 <template>
   <ul v-if="props.dataEntity.renderType === 'ul'">
     <li
-      v-for="eachEntity in $globalStores[props.dataEntity.dataEntityKey].collection"
+      v-for="(eachEntity, index) in $globalStores[props.dataEntity.dataEntityKey].collection"
       :key="eachEntity.loopKey"
     >
       {{ eachEntity.innerHtml ? eachEntity.innerHtml(eachEntity) : eachEntity }}
+      <span v-if="props.crudMode === true">
+        <a href="#" @click="$globalStores[props.dataEntity.dataEntityKey].remove(index)">delete</a>
+      </span>
       <Renderer v-if="eachEntity.children && props.renderChildren === true" :elements-array="eachEntity.children" />
     </li>
   </ul>

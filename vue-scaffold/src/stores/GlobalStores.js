@@ -10,8 +10,8 @@ Object.entries(mainPad.dataEntities).forEach((dataEntity) => {
       doubleCount: (state) => state.count * 2
     },
     actions: {
-      increment() {
-        this.count++;
+      remove(index) {
+        this.collection.splice(index, 1);
       }
     }
   });
