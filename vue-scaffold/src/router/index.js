@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import PadRenderer from '../components/PadRenderer.vue';
 import DataEntityList from '../components/DataEntityList.vue';
 import CrudDataRenderer from '../components/DataEntity/CrudDataRenderer.vue';
+import CrudForm from '../components/DataEntity/CrudForm.vue';
 import mainPad from '../../../main.pad.js';
 
 const routes = [];
@@ -30,6 +31,13 @@ Object.entries(mainPad.dataEntities).forEach((dataEntity) => {
   routes.push({
     path: dataEntityPath + dataEntityKey,
     component: CrudDataRenderer,
+    props: {
+      dataEntityKey
+    }
+  });
+  routes.push({
+    path: dataEntityPath + dataEntityKey + '/:id',
+    component: CrudForm,
     props: {
       dataEntityKey
     }

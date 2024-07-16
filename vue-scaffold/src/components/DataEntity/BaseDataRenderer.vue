@@ -22,7 +22,12 @@ if (props.elementsArray) {
     >
       {{ eachEntity.innerHtml ? eachEntity.innerHtml(eachEntity) : eachEntity }}
       <span v-if="props.crudMode === true">
+        &nbsp;
         <a href="#" @click="$globalStores[props.dataEntity.dataEntityKey].remove(index)">delete</a>
+        &nbsp;
+        <RouterLink :to="'/data-entities/' + props.dataEntity.dataEntityKey + '/' + index"
+          >update</RouterLink
+        >
       </span>
       <Renderer
         v-if="eachEntity.children && props.renderChildren === true"
