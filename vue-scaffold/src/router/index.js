@@ -20,29 +20,31 @@ Object.entries(mainPad.pageRoutes).forEach((pageRoute) => {
 });
 
 // CRUD routes for each dataEntity
-const dataEntityPath = '/data-entities/';
+if (mainPad.dataEntities) {
+  const dataEntityPath = '/data-entities/';
 
-routes.push({
-  path: dataEntityPath,
-  component: DataEntityList
-});
-Object.entries(mainPad.dataEntities).forEach((dataEntity) => {
-  const [dataEntityKey] = dataEntity;
   routes.push({
-    path: dataEntityPath + dataEntityKey,
-    component: CrudDataRenderer,
-    props: {
-      dataEntityKey
-    }
+    path: dataEntityPath,
+    component: DataEntityList
   });
-  routes.push({
-    path: dataEntityPath + dataEntityKey + '/:id',
-    component: CrudForm,
-    props: {
-      dataEntityKey
-    }
+  Object.entries(mainPad.dataEntities).forEach((dataEntity) => {
+    const [dataEntityKey] = dataEntity;
+    routes.push({
+      path: dataEntityPath + dataEntityKey,
+      component: CrudDataRenderer,
+      props: {
+        dataEntityKey
+      }
+    });
+    routes.push({
+      path: dataEntityPath + dataEntityKey + '/:id',
+      component: CrudForm,
+      props: {
+        dataEntityKey
+      }
+    });
   });
-});
+}
 
 const router = createRouter({
   history: createWebHistory(),
