@@ -5,8 +5,6 @@ const props = defineProps({
   dataEntityKey: String
 });
 const myStore = useGlobalStores[props.dataEntityKey]();
-
-const model = defineModel();
 </script>
 
 <template>
