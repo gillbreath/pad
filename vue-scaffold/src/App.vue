@@ -7,11 +7,11 @@ if (mainPad.dataEntities) showCrudControls = true;
 
 <template>
   <RouterView />
-  <div id="crud-controls">
   <template v-if="showCrudControls">
-    <RouterLink :to="'/'">home</RouterLink>
-    &nbsp;&gt;&nbsp;
-    <RouterLink :to="'/data-entities/'"> data-entities </RouterLink>
+    <div id="crud-controls">
+      <RouterLink :to="'/'">home</RouterLink>
+      &nbsp;&gt;&nbsp;
+      <RouterLink :to="'/data-entities/'"> data-entities </RouterLink>
+    </div>
   </template>
-  </div>
 </template>
