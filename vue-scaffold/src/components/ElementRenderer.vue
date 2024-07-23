@@ -51,6 +51,10 @@ if (props.elementsArray) {
     <nav v-if="eachEl.elementType === 'nav'">
       <Renderer v-if="eachEl.children" :elements-array="eachEl.children" />
     </nav>
+    <p v-if="eachEl.elementType === 'p'">
+      {{ eachEl.innerHtml }}
+      <Renderer v-if="eachEl.children" :elements-array="eachEl.children" />
+    </p>
     <section v-if="eachEl.elementType === 'section'" :class="eachEl.class" :id="eachEl.id">
       <Renderer v-if="eachEl.children" :elements-array="eachEl.children" />
     </section>
