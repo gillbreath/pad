@@ -2,7 +2,7 @@
 import LoopKey from '../loopKey.js';
 
 const props = defineProps({
-  linkList: Array,
+  linkList: Array
 });
 if (props.linkList) {
   props.linkList.forEach((e) => {
@@ -13,14 +13,9 @@ if (props.linkList) {
 
 <template>
   <ul>
-    <li
-      v-for="eachLink in props.linkList"
-      :key="eachLink.loopKey"
-    >
+    <li v-for="eachLink in props.linkList" :key="eachLink.loopKey">
       <span v-if="eachLink.routerLink">
-        <RouterLink :to="eachLink.routerLink"
-        >{{ eachLink.text }}</RouterLink
-        >
+        <RouterLink :to="eachLink.routerLink">{{ eachLink.text }}</RouterLink>
       </span>
       <span v-if="eachLink.link">
         <a :href="eachLink.link">{{ eachLink.text }}</a>
