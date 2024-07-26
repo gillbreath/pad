@@ -1,5 +1,5 @@
 <script setup>
-import LoopKey from '../loopKey.js';
+import LoopKey from '../../loopKey.js';
 
 const props = defineProps({
   linkList: Array
