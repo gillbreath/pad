@@ -28,3 +28,6 @@ coverage
 *.sw?
 
 *.tsbuildinfo
+
+# Symlink to non-framework assets (images, css etc)
+src/assets/nonrepo
