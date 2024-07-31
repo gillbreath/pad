@@ -32,8 +32,15 @@ const headerPad = [
             ]
           },
           {
-            elementType: 'preFabLinkList',
-            elementsArray: props.options.navLinkList
+            elementType: 'nav',
+            children: [
+              {
+                elementType: 'preFabLinkList',
+                options: {
+                  linkList: props.options.navLinkList
+                }
+              }
+            ]
           }
         ]
       }
