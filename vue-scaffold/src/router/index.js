@@ -8,16 +8,18 @@ import mainPad from '../../../main.pad.js';
 const routes = [];
 
 // pageRoutes
-Object.entries(mainPad.pageRoutes).forEach((pageRoute) => {
-  const [pageRouteKey, pageRouteValue] = pageRoute;
-  routes.push({
-    path: pageRouteValue.path || '/' + pageRouteKey,
-    component: PadRenderer,
-    props: {
-      elementsArray: pageRouteValue.children
-    }
+if (mainPad.pageRoutes) {
+  Object.entries(mainPad.pageRoutes).forEach((pageRoute) => {
+    const [pageRouteKey, pageRouteValue] = pageRoute;
+    routes.push({
+      path: pageRouteValue.path || '/' + pageRouteKey,
+      component: PadRenderer,
+      props: {
+        elementsArray: pageRouteValue.children
+      }
+    });
   });
-});
+}
 
 // CRUD routes for each dataEntity
 if (mainPad.dataEntities) {
