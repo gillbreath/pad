@@ -1,7 +1,7 @@
 // Framework CSS - CRUD controls etc
 import './assets/pad.css';
 // Symlink to app css for convenience
-import './assets/nonrepo/main.css';
+// import './assets/nonrepo/main.css';
 
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
