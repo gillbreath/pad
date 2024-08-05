@@ -2,7 +2,7 @@
 import BaseDataRenderer from './BaseDataRenderer.vue';
 
 const props = defineProps({
-  dataEntityKey: Object
+  dataEntityKey: String
 });
 const dataEntity = {
   dataEntityKey: props.dataEntityKey,
