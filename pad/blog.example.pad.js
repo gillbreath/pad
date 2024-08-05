@@ -2,20 +2,16 @@ const dataEntities = {
   articles: {
     fields: {
       title: {
-        slug: 'article-title',
-        defaultValue: ''
+        defaultValue: 'Title'
       },
       category: {
-        slug: 'article-category',
         defaultValue: ''
       },
       author: {
-        slug: 'article-author',
-        defaultValue: ''
+        defaultValue: 'Elias Carlston'
       },
       text: {
-        slug: 'article-content',
-        defaultValue: ''
+        defaultValue: 'Body Content'
       },
     },
     preLoad: [
@@ -25,8 +21,7 @@ const dataEntities = {
   categories: {
     fields: {
       name: {
-        slug: 'category-name',
-        defaultValue: ''
+        defaultValue: 'Category'
       },
     },
     preLoad: [
@@ -41,81 +36,74 @@ const pageRoutes = {
     title: 'Home',
     children: [
       {
-        elementType: 'section',
-        class: 'banner',
+        elementType: 'main',
+        class: 'container',
         children: [
           {
-            elementType: 'img',
-            alt: 'portrait of Elias in his office with computer and guitars',
-            src: '/assets/banner-office.jpg',
+            elementType: 'preFabHeader',
+            options: {
+              siteName: 'Elias Judas',
+              siteNameImageSrc: './src/assets/nonrepo/elias-judas-logo.gif',
+              siteLogoImageSrc: './src/assets/nonrepo/headshot.jpg',
+              navLinkList: [
+                {
+                  link: '#bio',
+                  text: 'bio'
+                },
+                {
+                  link: '#music',
+                  text: 'music'
+                },
+                {
+                  link: '#contact',
+                  text: 'contact'
+                },
+              ]
+            }
+          },
+          {
+            elementType: 'section',
+            children: [
+              {
+                elementType: 'div',
+                class: 'well',
+                children: [
+                  {
+                    elementType: 'p',
+                    innerHtml: 'Elias Judas plays rock \'n roll music.'
+                  },
+                  {
+                    elementType: 'h1',
+                    innerHtml: 'music'
+                  },
+                  {
+                    elementType: 'preFabLinkList',
+                    options: {
+                      id: 'music-list',
+                      linkList: [
+                        {
+                          link: 'https://www.facebook.com/eliasjamesmusic/',
+                          text: 'Facebook'
+                        },
+                        {
+                          link: 'https://www.youtube.com/channel/UCo90TSZZQYNIDh4vneV6-iQ?view_as=subscriber',
+                          text: 'YouTube'
+                        },
+                        {
+                          link: 'https://www.reverbnation.com/eliasjames',
+                          text: 'ReverbNation'
+                        },
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
           },
         ],
-      },
-      {
-        elementType: 'section',
-        class: 'well',
-        id: 'about',
-        children: [
-          {
-            elementType: 'dataEntity',
-            dataEntityKey: 'articles',
-            renderType: 'ul'
-          }
-        ],
-      },
-    ],
-  },
-  music: {
-    children: [
-      {
-        elementType: 'h2',
-        innerHtml: 'music',
-      },
-      {
-        elementType: 'ul',
-        children: [
-          {
-            elementType: 'li',
-            innerHtml: 'youtbue',
-          },
-          {
-            elementType: 'li',
-            innerHtml: 'bandcamp',
-          },
-          {
-            elementType: 'li',
-            innerHtml: 'etc',
-          },
-        ]
       }
     ],
-  },
-  writing: {
-    title: 'Writing',
-    children: [
-      {
-        elementType: 'h2',
-        innerHtml: 'writing',
-      },
-      {
-        elementType: 'ul',
-        children: [
-          {
-            elementType: 'li',
-            innerHtml: 'article',
-          },
-          {
-            elementType: 'li',
-            innerHtml: 'essay',
-          },
-          {
-            elementType: 'li',
-            innerHtml: 'contact',
-          },
-        ]
-      }
-    ],
-  },
+  }
 };
 
 const siteSchema = {
