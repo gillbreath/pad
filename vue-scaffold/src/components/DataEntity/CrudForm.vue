@@ -9,6 +9,10 @@ const myStore = useGlobalStores[props.dataEntityKey]();
 
 <template>
   <form>
-    <input v-model="myStore.collection[$route.params.id]" />
+    <template v-for="eachField in Object.keys(myStore.collection[$route.params.id])">
+      <label :for="eachField">{{ eachField }}</label>&nbsp;
+      <input :id="eachField" v-model="myStore.collection[$route.params.id][eachField]" />
+      <br/>
+    </template>
   </form>
 </template>
