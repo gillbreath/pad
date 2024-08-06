@@ -4,18 +4,18 @@ import PadRenderer from '../PadRenderer.vue';
 const props = defineProps({
   options: Object
 });
-const logoTextOptions = (props.options.siteNameImageSrc) ?
-  {
-    elementType: 'img',
-    class: 'logo text',
-    alt: props.options.siteName + ' logo',
-    src: props.options.siteNameImageSrc
-  } :
-  {
-    elementType: 'span',
-    class: 'logo text',
-    innerHtml: props.options.siteName || 'PAD Header'
-  };
+const logoTextOptions = props.options.siteNameImageSrc
+  ? {
+      elementType: 'img',
+      class: 'logo text',
+      alt: props.options.siteName + ' logo',
+      src: props.options.siteNameImageSrc
+    }
+  : {
+      elementType: 'span',
+      class: 'logo text',
+      innerHtml: props.options.siteName || 'PAD Header'
+    };
 const headerPad = [
   {
     elementType: 'header',
