@@ -1,62 +1,88 @@
-export default [
-  {
-    "elementType": "header",
-    "children": [
-      {
-        "elementType": "nav",
-        "children": [
+export default {
+  padOptions: {
+    header: {
+      elementType: 'preFabHeader',
+      options: {
+        logoPictureAltText: 'img alt text',
+        siteLogoImageSrc: 'src',
+        siteName: 'PAD Blog',
+        navLinkList: [
           {
-            "elementType": "a",
-            "class": "foo",
-            "href": "#",
-            "innerHtml": "anchor text, internal"
+            routerLink: '/about',
+            text: 'about'
           },
           {
-            "elementType": "a",
-            "class": "bar",
-            "href": "https://example.com/",
-            "innerHtml": "anchor text, external"
-          }
-        ]
-      },
-      {
-        "elementType": "div",
-        "class": "bar",
-        "children": [
-          {
-            "elementType": "h1",
-            "class": "baz",
-            "innerHtml": "heading one text"
+            routerLink: '/blog',
+            text: 'blog'
           },
           {
-            "elementType": "h2",
-            "class": "keedl",
-            "innerHtml": "heading two text"
-          }
+            routerLink: '/contact',
+            text: 'contact'
+          },
         ]
       }
-    ]
+    }
   },
-  {
-    "elementType": "section",
-    "children": [
-      {
-        "elementType": "ul",
-        "children": [
-          {
-            "elementType": "li",
-            "children": [
-              {
-                "elementType": "img",
-                "alt": "img alt text",
-                "class": "some-img-class",
-                "src": "src"
-              }
-            ],
-            "innerHtml": "li text"
-          }
-        ]
-      }
-    ]
-  }
-]
+  seedPadPageRoutesTestChildren: [
+    {
+      "elementType": "header",
+      "children": [
+        {
+          "elementType": "nav",
+          "children": [
+            {
+              "elementType": "a",
+              "class": "foo",
+              "href": "#",
+              "innerHtml": "anchor text, internal"
+            },
+            {
+              "elementType": "a",
+              "class": "bar",
+              "href": "https://example.com/",
+              "innerHtml": "anchor text, external"
+            }
+          ]
+        },
+        {
+          "elementType": "div",
+          "class": "bar",
+          "children": [
+            {
+              "elementType": "h1",
+              "class": "baz",
+              "innerHtml": "heading one text"
+            },
+            {
+              "elementType": "h2",
+              "class": "keedl",
+              "innerHtml": "heading two text"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "elementType": "section",
+      "children": [
+        {
+          "elementType": "ul",
+          "children": [
+            {
+              "elementType": "li",
+              "children": [
+                {
+                  "elementType": "img",
+                  "alt": "img alt text",
+                  "class": "some-img-class",
+                  "src": "src"
+                }
+              ],
+              "innerHtml": "li text"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

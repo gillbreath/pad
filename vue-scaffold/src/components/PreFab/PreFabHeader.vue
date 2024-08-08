@@ -32,7 +32,7 @@ const headerPad = [
               {
                 elementType: 'img',
                 class: 'logo picture',
-                alt: props.options.siteName + ' logo picture',
+                alt: props.options.logoPictureAltText || props.options.siteName + ' logo picture',
                 src: props.options.siteLogoImageSrc || '/src/assets/Gillbreath-Pad-Mascot.jpg'
               },
               logoTextOptions

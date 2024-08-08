@@ -3,7 +3,7 @@
     "elementType": "a",
     "assertions": [
       "be.visible",
-      ["have.attr", "href", "#"],
+      ["have.attr", "href", "/"],
       ["have.class", "foo"]
     ]
   },
