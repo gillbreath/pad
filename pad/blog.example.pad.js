@@ -1,21 +1,22 @@
 const dataEntities = {
   articles: {
     fields: {
-      title: {
-        defaultValue: 'Title'
-      },
-      category: {
-        defaultValue: ''
-      },
-      author: {
-        defaultValue: 'Elias Carlston'
-      },
-      text: {
-        defaultValue: 'Body Content'
-      },
+      author: {},
+      category: {},
+      text: {},
+      title: {},
     },
     preLoad: [
-      'one', 'two', { innerHtml: (entity) => entity.value, value: 'thr33', children: [{ elementType: 'h2', innerHtml: 'non' }] }
+      {
+        category: 'marketing',
+        title: 'Lorem Ipsum',
+        text: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+      },
+      {
+        category: 'tech',
+        title: 'Lorem Ipsum',
+        text: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+      },
     ]
   },
   categories: {
@@ -25,7 +26,18 @@ const dataEntities = {
       },
     },
     preLoad: [
-      'Aa', 'Bb', { innerHtml: (entity) => entity.value, value: 'Cc', children: [{ elementType: 'h2', innerHtml: 'diff' }] }
+      {
+        name: 'Technology',
+        slug: 'tech'
+      },
+      {
+        name: 'Marketing',
+        slug: 'marketing'
+      },
+      {
+        name: 'Product Management',
+        slug: 'product-management'
+      },
     ]
   }
 };
@@ -36,78 +48,68 @@ const pageRoutes = {
     title: 'Home',
     children: [
       {
-        elementType: 'main',
-        class: 'container',
-        children: [
-          {
-            elementType: 'preFabHeader',
-            options: {
-              siteName: 'Elias Judas',
-              siteNameImageSrc: './src/assets/nonrepo/elias-judas-logo.gif',
-              siteLogoImageSrc: './src/assets/nonrepo/headshot.jpg',
-              navLinkList: [
-                {
-                  link: '#bio',
-                  text: 'bio'
-                },
-                {
-                  link: '#music',
-                  text: 'music'
-                },
-                {
-                  link: '#contact',
-                  text: 'contact'
-                },
-              ]
-            }
-          },
-          {
-            elementType: 'section',
-            children: [
-              {
-                elementType: 'div',
-                class: 'well',
-                children: [
-                  {
-                    elementType: 'p',
-                    innerHtml: 'Elias Judas plays rock \'n roll music.'
-                  },
-                  {
-                    elementType: 'h1',
-                    innerHtml: 'music'
-                  },
-                  {
-                    elementType: 'preFabLinkList',
-                    options: {
-                      id: 'music-list',
-                      linkList: [
-                        {
-                          link: 'https://www.facebook.com/eliasjamesmusic/',
-                          text: 'Facebook'
-                        },
-                        {
-                          link: 'https://www.youtube.com/channel/UCo90TSZZQYNIDh4vneV6-iQ?view_as=subscriber',
-                          text: 'YouTube'
-                        },
-                        {
-                          link: 'https://www.reverbnation.com/eliasjames',
-                          text: 'ReverbNation'
-                        },
-                      ]
-                    }
-                  }
-                ]
-              }
-            ]
-          },
-        ],
+        elementType: 'p',
+        innerHtml: 'Welcome to PAD Blog, an example site.'
       }
-    ],
+    ]
+  },
+  contact : {
+    path: '/contact',
+    title: 'Contact',
+    children: [
+      {
+        elementType: 'h1',
+        innerHtml: 'contact'
+      },
+      {
+        elementType: 'preFabLinkList',
+        options: {
+          id: 'contact-list',
+          linkList: [
+            {
+              link: 'http://www.example.com/facebook/',
+              text: 'Facebook'
+            },
+            {
+              link: 'http://www.example.com/insta/',
+              text: 'Instagram'
+            },
+            {
+              link: 'mailto:pad@example.com',
+              text: 'Email'
+            },
+          ]
+        }
+      }
+    ]
+  }
+};
+const padOptions = {
+  header: {
+    elementType: 'preFabHeader',
+    options: {
+      siteName: 'PAD Blog',
+      navLinkList: [
+        {
+          routerLink: '/about',
+          text: 'about'
+        },
+        {
+          routerLink: '/blog',
+          text: 'blog'
+        },
+        {
+          routerLink: '/contact',
+          text: 'contact'
+        },
+      ]
+    }
   }
 };
 
 const siteSchema = {
   dataEntities,
+  padOptions,
   pageRoutes
 };
 export default siteSchema;
