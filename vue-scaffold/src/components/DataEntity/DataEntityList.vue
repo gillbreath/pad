@@ -19,6 +19,5 @@ Object.entries(useGlobalStores).forEach((eachStore) => {
 <template>
   <h1>admin</h1>
   <h2>data entities</h2>
-  <PreFabLinkList :options="options">
-  </PreFabLinkList>
+  <PreFabLinkList :options="options"> </PreFabLinkList>
 </template>

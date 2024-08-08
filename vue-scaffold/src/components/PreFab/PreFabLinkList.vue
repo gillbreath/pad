@@ -4,7 +4,7 @@ import LoopKey from '../../loopKey.js';
 const props = defineProps({
   options: Object
 });
-console.log('t', props )
+
 if (props.options.linkList) {
   props.options.linkList.forEach((e) => {
     e.loopKey = LoopKey();
