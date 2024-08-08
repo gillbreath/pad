@@ -20,8 +20,8 @@ if (mainPad.dataEntities) showCrudControls = true;
   <template v-if="showCrudControls">
     <div id="crud-controls">
       <RouterLink :to="'/'">home</RouterLink>
-      &nbsp;&gt;&nbsp;
-      <RouterLink :to="'/data-entities/'"> data-entities </RouterLink>
+      &nbsp;&lt;&nbsp;&gt;&nbsp;
+      <RouterLink :to="'/admin/'">admin</RouterLink>
     </div>
   </template>
 </template>

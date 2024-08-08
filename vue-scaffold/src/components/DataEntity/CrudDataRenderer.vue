@@ -11,7 +11,8 @@ const dataEntity = {
 </script>
 
 <template>
-  <h1>data entity</h1>
-  <h2>{{ props.dataEntityKey }}</h2>
+  <h1>admin</h1>
+  <h2>data entities</h2>
+  <h3>{{ props.dataEntityKey }}</h3>
   <BaseDataRenderer :data-entity="dataEntity" :render-children="false" :crud-mode="true" />
 </template>

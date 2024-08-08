@@ -1,11 +1,14 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import PadRenderer from '../components/PadRenderer.vue';
-import DataEntityList from '../components/DataEntityList.vue';
+import DataEntityList from '../components/DataEntity/DataEntityList.vue';
 import CrudDataRenderer from '../components/DataEntity/CrudDataRenderer.vue';
 import CrudForm from '../components/DataEntity/CrudForm.vue';
 import mainPad from '../../../main.pad.js';
+import adminHome from '../components/adminHome.vue';
 
 const routes = [];
+const adminPath = '/admin/';
+const dataEntityPath = adminPath + 'data-entities/';
 
 // pageRoutes
 if (mainPad.pageRoutes) {
@@ -23,8 +26,10 @@ if (mainPad.pageRoutes) {
 
 // CRUD routes for each dataEntity
 if (mainPad.dataEntities) {
-  const dataEntityPath = '/data-entities/';
-
+  routes.push({
+    path: adminPath,
+    component: adminHome
+  });
   routes.push({
     path: dataEntityPath,
     component: DataEntityList
