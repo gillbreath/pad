@@ -1,6 +1,7 @@
 <script setup>
 import Renderer from '../ElementRenderer.vue';
 import LoopKey from '../../loopKey.js';
+import constants from '../../constants.js';
 
 const props = defineProps({
   crudMode: Boolean,
@@ -25,7 +26,7 @@ if (props.elementsArray) {
         &nbsp;
         <a href="#" @click="$globalStores[props.dataEntity.dataEntityKey].remove(index)">delete</a>
         &nbsp;
-        <RouterLink :to="'/data-entities/' + props.dataEntity.dataEntityKey + '/' + index"
+        <RouterLink :to="constants.dataEntityPath + props.dataEntity.dataEntityKey + '/' + index"
           >update</RouterLink
         >
       </span>

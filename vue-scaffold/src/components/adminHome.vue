@@ -1,9 +1,10 @@
 <script setup>
 import LoopKey from '../loopKey.js';
 import PreFabLinkList from '@/components/PreFab/PreFabLinkList.vue';
+import constants from '../constants.js';
 
 const options = {
-  linkList: [{ routerLink: '/admin/data-entities/', text: 'data entities' }]
+  linkList: [{ routerLink: constants.dataEntityPath, text: 'data entities' }]
 };
 options.linkList.forEach((eachLink) => {
   eachLink.loopKey = LoopKey();

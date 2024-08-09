@@ -5,10 +5,9 @@ import CrudDataRenderer from '../components/DataEntity/CrudDataRenderer.vue';
 import CrudForm from '../components/DataEntity/CrudForm.vue';
 import mainPad from '../../../main.pad.js';
 import adminHome from '../components/adminHome.vue';
+import constants from '../constants.js';
 
 const routes = [];
-const adminPath = '/admin/';
-const dataEntityPath = adminPath + 'data-entities/';
 
 // pageRoutes
 if (mainPad.pageRoutes) {
@@ -27,24 +26,24 @@ if (mainPad.pageRoutes) {
 // CRUD routes for each dataEntity
 if (mainPad.dataEntities) {
   routes.push({
-    path: adminPath,
+    path: constants.adminPath,
     component: adminHome
   });
   routes.push({
-    path: dataEntityPath,
+    path: constants.dataEntityPath,
     component: DataEntityList
   });
   Object.entries(mainPad.dataEntities).forEach((dataEntity) => {
     const [dataEntityKey] = dataEntity;
     routes.push({
-      path: dataEntityPath + dataEntityKey,
+      path: constants.dataEntityPath + dataEntityKey,
       component: CrudDataRenderer,
       props: {
         dataEntityKey
       }
     });
     routes.push({
-      path: dataEntityPath + dataEntityKey + '/:id',
+      path: constants.dataEntityPath + dataEntityKey + '/:id',
       component: CrudForm,
       props: {
         dataEntityKey

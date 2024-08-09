@@ -1,6 +1,7 @@
 <script setup>
 import useGlobalStores from '@/stores/GlobalStores.js';
 import PreFabLinkList from '@/components/PreFab/PreFabLinkList.vue';
+import constants from '../../constants.js';
 
 const globalStores = {};
 const options = {
@@ -10,7 +11,7 @@ Object.entries(useGlobalStores).forEach((eachStore) => {
   const [eachStoreKey, eachStoreValue] = eachStore;
   globalStores[eachStoreKey] = eachStoreValue();
   options.linkList.push({
-    routerLink: '/admin/data-entities/' + eachStoreKey,
+    routerLink: constants.dataEntityPath + eachStoreKey,
     text: eachStoreKey
   });
 });
