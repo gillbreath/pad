@@ -44,7 +44,7 @@ const headerPad = [
               {
                 elementType: 'preFabLinkList',
                 options: {
-                  linkList: props.options.navLinkList
+                  collection: props.options.navLinks
                 }
               }
             ]

@@ -5,12 +5,12 @@ import constants from '../../constants.js';
 
 const globalStores = {};
 const options = {
-  linkList: []
+  collection: []
 };
 Object.entries(useGlobalStores).forEach((eachStore) => {
   const [eachStoreKey, eachStoreValue] = eachStore;
   globalStores[eachStoreKey] = eachStoreValue();
-  options.linkList.push({
+  options.collection.push({
     routerLink: constants.dataEntityPath + eachStoreKey,
     text: eachStoreKey
   });

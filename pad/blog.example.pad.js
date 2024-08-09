@@ -70,7 +70,7 @@ const pageRoutes = {
         elementType: 'preFabLinkList',
         options: {
           id: 'contact-list',
-          linkList: [
+          collection: [
             {
               link: 'http://www.example.com/facebook/',
               text: 'Facebook'
@@ -94,7 +94,7 @@ const padOptions = {
     elementType: 'preFabHeader',
     options: {
       siteName: 'PAD Blog',
-      navLinkList: [
+      navLinks: [
         {
           routerLink: '/about',
           text: 'about'

@@ -1,26 +1,25 @@
 <script setup>
 import LoopKey from '../../loopKey.js';
+import DataEntityUL from '@/components/DataEntity/DataEntityUL.vue';
 
 const props = defineProps({
   options: Object
 });
 
-if (props.options.linkList) {
-  props.options.linkList.forEach((e) => {
+if (props.options.collection) {
+  props.options.collection.forEach((e) => {
     e.loopKey = LoopKey();
   });
 }
 </script>
 
 <template>
-  <ul>
-    <li v-for="eachLink in props.options.linkList" :key="eachLink.loopKey">
-      <span v-if="eachLink.routerLink">
-        <RouterLink :to="eachLink.routerLink">{{ eachLink.text }}</RouterLink>
-      </span>
-      <span v-if="eachLink.link">
-        <a :href="eachLink.link">{{ eachLink.text }}</a>
-      </span>
-    </li>
-  </ul>
+  <DataEntityUL :options="options" v-slot:default="slotProps">
+    <span v-if="slotProps.eachItem.routerLink">
+      <RouterLink :to="slotProps.eachItem.routerLink">{{ slotProps.eachItem.text }}</RouterLink>
+    </span>
+    <span v-if="slotProps.eachItem.link">
+      <a :href="slotProps.eachItem.link">{{ slotProps.eachItem.text }}</a>
+    </span>
+  </DataEntityUL>
 </template>

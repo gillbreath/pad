@@ -4,9 +4,9 @@ import PreFabLinkList from '@/components/PreFab/PreFabLinkList.vue';
 import constants from '../constants.js';
 
 const options = {
-  linkList: [{ routerLink: constants.dataEntityPath, text: 'data entities' }]
+  collection: [{ routerLink: constants.dataEntityPath, text: 'data entities' }]
 };
-options.linkList.forEach((eachLink) => {
+options.collection.forEach((eachLink) => {
   eachLink.loopKey = LoopKey();
 });
 </script>
