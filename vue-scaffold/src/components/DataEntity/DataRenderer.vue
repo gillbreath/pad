@@ -1,7 +1,7 @@
 <script setup>
 import LoopKey from '../../loopKey.js';
 import constants from '../../constants.js';
-import DataEntityUL from './DataEntityUL.vue';
+import DataLoopUL from '@/components/PreFab/DataLoopUL.vue';
 import useGlobalStores from '@/stores/GlobalStores.js';
 
 const props = defineProps({
@@ -17,11 +17,7 @@ if (props.elementsArray) {
 </script>
 
 <template>
-  <DataEntityUL
-    :collection="myStore.collection"
-    :options="props.options"
-    v-slot:default="slotProps"
-  >
+  <DataLoopUL :collection="myStore.collection" :options="props.options" v-slot:default="slotProps">
     {{ slotProps.eachItem }}
     <span v-if="props.crudMode === true">
       &nbsp;
@@ -31,5 +27,5 @@ if (props.elementsArray) {
         >update</RouterLink
       >
     </span>
-  </DataEntityUL>
+  </DataLoopUL>
 </template>
