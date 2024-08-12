@@ -23,8 +23,8 @@ if (props.collection) {
 <template>
   <table border="1">
     <tr>
-      <!-- eslint-disable-next-line require-v-for-key -->
-      <th v-for="(eachField, index) in tableSchema" :key="index">
+      <!-- eslint-disable-next-line vue/require-v-for-key -->
+      <th v-for="eachField in tableSchema">
         {{ eachField }}
       </th>
     </tr>
