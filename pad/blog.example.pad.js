@@ -58,6 +58,16 @@ const pageRoutes = {
       }
     ]
   },
+  about: {
+    path: '/about',
+    title: 'About',
+    children: [
+      {
+        elementType: 'p',
+        innerHtml: 'An example of a typical blog.'
+      }
+    ]
+  },
   blog: {
     path: '/blog',
     title: 'Blog',
