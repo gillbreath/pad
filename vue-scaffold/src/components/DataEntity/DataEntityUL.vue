@@ -5,7 +5,6 @@ const props = defineProps({
   options: Object
 });
 
-console.log('if (', props.options.collection);
 if (props.options.collection) {
   props.options.collection.forEach((e) => {
     e.loopKey = LoopKey();
