@@ -1,10 +1,10 @@
 <script setup>
-import BaseDataRenderer from './BaseDataRenderer.vue';
+import DataRenderer from './DataRenderer.vue';
 
 const props = defineProps({
   dataEntityKey: String
 });
-const dataEntity = {
+const options = {
   dataEntityKey: props.dataEntityKey,
   renderType: 'ul'
 };
@@ -14,5 +14,5 @@ const dataEntity = {
   <h1>admin</h1>
   <h2>data entities</h2>
   <h3>{{ props.dataEntityKey }}</h3>
-  <BaseDataRenderer :data-entity="dataEntity" :render-children="false" :crud-mode="true" />
+  <DataRenderer :options="options" />
 </template>

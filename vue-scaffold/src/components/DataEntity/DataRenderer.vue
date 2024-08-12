@@ -1,17 +1,14 @@
 <script setup>
-import Renderer from '../ElementRenderer.vue';
 import LoopKey from '../../loopKey.js';
 import constants from '../../constants.js';
 import DataEntityUL from './DataEntityUL.vue';
+import useGlobalStores from '@/stores/GlobalStores.js';
 
 const props = defineProps({
-  crudMode: Boolean,
-  dataEntity: Object,
-  renderChildren: Boolean
+  options: Object
 });
-const options = {
-  collection: props.dataEntity
-};
+const myStore = useGlobalStores[props.options.dataEntityKey]();
+
 if (props.elementsArray) {
   props.elementsArray.forEach((e) => {
     e.loopKey = LoopKey();
@@ -20,8 +17,12 @@ if (props.elementsArray) {
 </script>
 
 <template>
-  <DataEntityUL :options="options" v-if="props.dataEntity.renderType === 'ul'">
-    {{ eachEntity.innerHtml ? eachEntity.innerHtml(eachEntity) : eachEntity }}
+  <DataEntityUL
+    :collection="myStore.collection"
+    :options="props.options"
+    v-slot:default="slotProps"
+  >
+    {{ slotProps.eachItem }}
     <span v-if="props.crudMode === true">
       &nbsp;
       <a href="#" @click="$globalStores[props.dataEntity.dataEntityKey].remove(index)">delete</a>
@@ -30,9 +31,5 @@ if (props.elementsArray) {
         >update</RouterLink
       >
     </span>
-    <Renderer
-      v-if="eachEntity.children && props.renderChildren === true"
-      :elements-array="eachEntity.children"
-    />
   </DataEntityUL>
 </template>

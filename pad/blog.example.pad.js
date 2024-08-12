@@ -58,6 +58,20 @@ const pageRoutes = {
       }
     ]
   },
+  blog: {
+    path: '/blog',
+    title: 'Blog',
+    children: [
+      {
+        elementType: 'p',
+        innerHtml: 'All articles for PAD Blog'
+      },
+      {
+        elementType: 'dataEntity',
+        dataEntityKey: 'articles',
+      }
+    ]
+  },
   contact : {
     path: '/contact',
     title: 'Contact',

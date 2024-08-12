@@ -1,6 +1,6 @@
 <script setup>
 import ElementRenderer from './ElementRenderer.vue';
-import DataEntityRenderer from './DataEntity/BaseDataRenderer.vue';
+import DataRenderer from './DataEntity/DataRenderer.vue';
 import PreFabIndex from './PreFab/PreFabIndex.vue';
 import LoopKey from '../loopKey.js';
 
@@ -19,7 +19,7 @@ props.elementsArray.forEach((e) => {
       :element-type="eachEl.elementType"
       :options="eachEl.options"
     />
-    <DataEntityRenderer v-if="eachEl.elementType === 'dataEntity'" :data-entity="eachEl" />
+    <DataRenderer v-if="eachEl.elementType === 'dataEntity'" :options="eachEl" />
     <ElementRenderer v-else :single-element="eachEl" />
   </template>
 </template>

@@ -14,7 +14,11 @@ if (props.options.collection) {
 </script>
 
 <template>
-  <DataEntityUL :options="options" v-slot:default="slotProps">
+  <DataEntityUL
+    :collection="props.options.collection"
+    :options="options"
+    v-slot:default="slotProps"
+  >
     <span v-if="slotProps.eachItem.routerLink">
       <RouterLink :to="slotProps.eachItem.routerLink">{{ slotProps.eachItem.text }}</RouterLink>
     </span>
