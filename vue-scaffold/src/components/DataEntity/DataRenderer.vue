@@ -2,6 +2,7 @@
 import LoopKey from '../../loopKey.js';
 import constants from '../../constants.js';
 import DataLoopUL from '@/components/PreFab/DataLoopUL.vue';
+import DataLoopTable from '@/components/PreFab/DataLoopTable.vue';
 import useGlobalStores from '@/stores/GlobalStores.js';
 
 const props = defineProps({
@@ -17,7 +18,12 @@ if (props.elementsArray) {
 </script>
 
 <template>
-  <DataLoopUL :collection="myStore.collection" :options="props.options" v-slot:default="slotProps">
+  <DataLoopUL
+    v-if="!props.options.renderType"
+    :collection="myStore.collection"
+    :options="props.options"
+    v-slot:default="slotProps"
+  >
     {{ slotProps.eachItem }}
     <span v-if="props.crudMode === true">
       &nbsp;
@@ -28,4 +34,11 @@ if (props.elementsArray) {
       >
     </span>
   </DataLoopUL>
+  <DataLoopTable
+    v-if="props.options.renderType === 'table'"
+    :collection="myStore.collection"
+    :options="props.options"
+  >
+    <slot v-bind:eachItem="eachItem"></slot>
+  </DataLoopTable>
 </template>

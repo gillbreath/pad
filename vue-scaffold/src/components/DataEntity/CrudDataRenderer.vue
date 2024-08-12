@@ -5,8 +5,9 @@ const props = defineProps({
   dataEntityKey: String
 });
 const options = {
+  crudMode: true,
   dataEntityKey: props.dataEntityKey,
-  renderType: 'ul'
+  renderType: 'table'
 };
 </script>
 
