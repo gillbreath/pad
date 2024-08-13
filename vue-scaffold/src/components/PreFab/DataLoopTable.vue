@@ -28,8 +28,9 @@ if (props.collection) {
         {{ eachField }}
       </th>
     </tr>
-    <tr v-for="eachItem in props.collection" :key="eachItem.loopKey">
-      <td v-for="(eachField, index) in Object.keys(eachItem)" :key="index">
+    <tr v-for="(eachItem, index) in props.collection" :key="eachItem.loopKey">
+      <!-- eslint-disable-next-line vue/require-v-for-key -->
+      <td v-for="eachField in Object.keys(eachItem)">
         {{ eachItem[eachField] }}
       </td>
       <td v-if="props.options.crudMode === true">
