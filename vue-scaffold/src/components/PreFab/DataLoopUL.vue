@@ -14,7 +14,7 @@ if (props.collection) {
 </script>
 
 <template>
-  <ul>
+  <ul :class="props.options.ulClasses">
     <li v-for="eachItem in props.collection" :key="eachItem.loopKey">
       <template v-if="eachItem.innerHtml">
         {{ eachItem.innerHtml }}

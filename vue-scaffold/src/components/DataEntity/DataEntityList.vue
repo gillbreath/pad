@@ -2,6 +2,7 @@
 import useGlobalStores from '@/stores/GlobalStores.js';
 import PreFabLinkList from '@/components/PreFab/PreFabLinkList.vue';
 import constants from '../../constants.js';
+import BreadCrumbs from '../PreFab/BreadCrumbs.vue';
 
 const globalStores = {};
 const options = {
@@ -18,7 +19,7 @@ Object.entries(useGlobalStores).forEach((eachStore) => {
 </script>
 
 <template>
-  <h1>admin</h1>
+  <BreadCrumbs />
   <h2>data entities</h2>
   <PreFabLinkList :options="options"> </PreFabLinkList>
 </template>

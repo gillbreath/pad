@@ -1,5 +1,6 @@
 <script setup>
 import DataRenderer from './DataRenderer.vue';
+import BreadCrumbs from '../PreFab/BreadCrumbs.vue';
 
 const props = defineProps({
   dataEntityKey: String
@@ -12,8 +13,7 @@ const options = {
 </script>
 
 <template>
-  <h1>admin</h1>
-  <h2>data entities</h2>
+  <BreadCrumbs />
   <h3>{{ props.dataEntityKey }}</h3>
   <DataRenderer :options="options" />
 </template>

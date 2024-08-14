@@ -27,6 +27,20 @@ nav {
 section .well {
   max-width: 600px;
 }
+ul.breadcrumbs {
+  display: flex;
+  list-style: none;
+  padding-left: 0;
+}
+ul.breadcrumbs li {
+  padding-right: 0.5em;
+}
+ul.breadcrumbs li::after {
+  content: ' > ';
+}
+ul.breadcrumbs li::last-child {
+  content: '';
+}
 .logo.text {
   height: 60px;
   width: 180px;
