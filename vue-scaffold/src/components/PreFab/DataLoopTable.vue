@@ -31,7 +31,11 @@ if (props.collection) {
     <tr v-for="(eachItem, index) in props.collection" :key="eachItem.loopKey">
       <!-- eslint-disable-next-line vue/require-v-for-key -->
       <td v-for="eachField in Object.keys(eachItem)">
-        {{ eachItem[eachField] }}
+        {{
+          typeof eachItem[eachField] === 'string'
+            ? eachItem[eachField].substr(0, 20) + (eachItem[eachField].length > 20 ? '...' : '')
+            : eachItem[eachField]
+        }}
       </td>
       <td v-if="props.options.crudMode === true">
         <RouterLink :to="constants.dataEntityPath + props.options.dataEntityKey + '/' + index"
