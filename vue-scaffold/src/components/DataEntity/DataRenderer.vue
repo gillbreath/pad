@@ -29,7 +29,7 @@ if (props.elementsArray) {
       &nbsp;
       <a href="#" @click="$globalStores[props.dataEntity.dataEntityKey].remove(index)">delete</a>
       &nbsp;
-      <RouterLink :to="constants.dataEntityPath + props.dataEntity.dataEntityKey + '/' + index"
+      <RouterLink :to="constants.dataEntityPath + props.dataEntity.dataEntityKey + '/' + slotProps.slug"
         >update</RouterLink
       >
     </span>

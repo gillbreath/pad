@@ -9,16 +9,19 @@ const dataEntities = {
     preLoad: [
       {
         category: 'marketing',
+        slug: 'an-excellent-mktng-article',
         title: 'Lorem Ipsum',
         text: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
       },
       {
         category: 'tech',
+        slug: 'a-helpful-technology-article',
         title: 'Lorem Ipsum',
         text: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
       },
       {
         category: 'product-management',
+        slug: 'an-insightful-pm-article',
         title: 'Lorem Ipsum',
         text: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
       },
