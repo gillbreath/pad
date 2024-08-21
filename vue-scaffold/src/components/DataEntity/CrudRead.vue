@@ -19,16 +19,14 @@ const myRecord = myStore.collection.find((e) => {
 <template>
   <BreadCrumbs />
   <form>
-    <template
-      v-for="eachField in Object.keys(myRecord)"
-      :key="eachField"
-    >
-      <label :for="eachField">{{ eachField }}:</label
-      >&nbsp;
+    <template v-for="eachField in Object.keys(myRecord)" :key="eachField">
+      <label :for="eachField">{{ eachField }}:</label>&nbsp;
       <div :id="eachField">{{ myRecord[eachField] }}</div>
       <br />
     </template>
-    <RouterLink :to="constants.dataEntityPath + props.dataEntityKey + '/' + myRecord.slug + '/update'"
-      >Update</RouterLink>
+    <RouterLink
+      :to="constants.dataEntityPath + props.dataEntityKey + '/' + myRecord.slug + '/update'"
+      >Update</RouterLink
+    >
   </form>
 </template>

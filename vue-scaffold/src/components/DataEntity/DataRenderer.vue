@@ -25,14 +25,6 @@ if (props.elementsArray) {
     v-slot:default="slotProps"
   >
     {{ slotProps.eachItem }}
-    <span v-if="props.crudMode === true">
-      &nbsp;
-      <a href="#" @click="$globalStores[props.dataEntity.dataEntityKey].remove(index)">delete</a>
-      &nbsp;
-      <RouterLink :to="constants.dataEntityPath + props.dataEntity.dataEntityKey + '/' + slotProps.slug"
-        >update</RouterLink
-      >
-    </span>
   </DataLoopUL>
   <DataLoopTable
     v-if="props.options.renderType === 'table'"
