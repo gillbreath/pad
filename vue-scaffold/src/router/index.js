@@ -4,6 +4,7 @@ import DataEntityList from '../components/DataEntity/DataEntityList.vue';
 import CrudDataRenderer from '../components/DataEntity/CrudDataRenderer.vue';
 import CrudRead from '../components/DataEntity/CrudRead.vue';
 import CrudUpdate from '../components/DataEntity/CrudUpdate.vue';
+import CrudCreate from '../components/DataEntity/CrudCreate.vue';
 import mainPad from '../../../main.pad.js';
 import adminHome from '../components/adminHome.vue';
 import constants from '../constants.js';
@@ -53,6 +54,13 @@ if (mainPad.dataEntities) {
     routes.push({
       path: constants.dataEntityPath + dataEntityKey + '/:slug/update',
       component: CrudUpdate,
+      props: {
+        dataEntityKey
+      }
+    });
+    routes.push({
+      path: constants.dataEntityPath + dataEntityKey + '/create',
+      component: CrudCreate,
       props: {
         dataEntityKey
       }
