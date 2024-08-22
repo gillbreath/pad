@@ -16,6 +16,6 @@ const options = {
   <BreadCrumbs />
   <h3>{{ props.dataEntityKey }}</h3>
   <DataRenderer :options="options" />
-  <br/>
+  <br />
   <RouterLink :to="$route.path + 'create'">Create</RouterLink>
 </template>
