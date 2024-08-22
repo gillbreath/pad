@@ -39,9 +39,7 @@ if (props.collection) {
       </td>
       <td v-if="props.options.crudMode === true">
         <RouterLink
-          :to="
-            constants.dataEntityPath + props.options.dataEntityKey + '/' + eachItem.slug
-          "
+          :to="constants.dataEntityPath + props.options.dataEntityKey + '/' + eachItem.slug"
           >read</RouterLink
         >
         <br />

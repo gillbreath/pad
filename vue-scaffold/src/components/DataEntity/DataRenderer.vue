@@ -1,6 +1,5 @@
 <script setup>
 import LoopKey from '../../loopKey.js';
-import constants from '../../constants.js';
 import DataLoopUL from '@/components/PreFab/DataLoopUL.vue';
 import DataLoopTable from '@/components/PreFab/DataLoopTable.vue';
 import useGlobalStores from '@/stores/GlobalStores.js';
