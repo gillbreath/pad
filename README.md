@@ -18,3 +18,6 @@ The first reference implementations will be in Vue / Express / Sqlite, for conve
 Vite (Vue bundler) imports css to embed styles within components. This import/embed can't be made dynamic (results in FOUC). Two solutions, both in `vue-scaffold/src/`:
 - Edit `main.js` to point directly at the desired css file(s), or
 - Create a symlink named `nonrepo` pointing to an assets directory containing a file named `main.css`. This dir can also be used to store images, favicon, etc.
+
+## License
+[MIT](https://github.com/gillbreath/pad/blob/main/LICENSE)
