@@ -3,6 +3,7 @@ import useGlobalStores from '@/stores/GlobalStores.js';
 import { useRoute } from 'vue-router';
 import BreadCrumbs from '../PreFab/BreadCrumbs.vue';
 import constants from '../../constants.js';
+import CrudForm from './CrudForm.vue';
 
 const route = useRoute();
 
@@ -18,12 +19,8 @@ const myRecord = myStore.collection.find((e) => {
 
 <template>
   <BreadCrumbs />
-  <template v-for="eachField in Object.keys(myRecord)" :key="eachField">
-    <label :for="eachField">{{ eachField }}:</label>&nbsp;
-    <input :id="eachField" v-model="myRecord[eachField]" />
-    <br />
-  </template>
-  <br />
+  <CrudForm :crud-record="myRecord">
+  </CrudForm>
   <RouterLink :to="constants.dataEntityPath + props.dataEntityKey + '/' + myRecord.slug"
     >Done</RouterLink
   >
