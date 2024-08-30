@@ -2,19 +2,13 @@ const dataEntities = {
   ingredients: {
     fields: {
       slug: {
-        unique: true,
-        urlFormatted: true,
         inputHint: 'must be unique, should be url-formatted (lowercase, dashes)'
       },
       name: {
-        inputHint: 'must be between 2-255 characters',
-        type: 'shortString',
-        range: [2, 255]
+        inputHint: 'must be between 2-255 characters'
       },
       measurement: {
-        defaultValue: 'whole',
-        type: 'shortString',
-        range: [0, 100]
+        defaultValue: 'whole'
       },
     },
     preLoad: [
