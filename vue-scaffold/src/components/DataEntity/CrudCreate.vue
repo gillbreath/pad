@@ -12,9 +12,9 @@ const props = defineProps({
   dataEntityKey: String
 });
 const myStore = useGlobalStores[props.dataEntityKey]();
-
 const dataEntityTemplate = mainPad.dataEntities[props.dataEntityKey].fields;
 const myRecord = {};
+
 Object.keys(dataEntityTemplate).forEach((e) => {
   myRecord[e] = dataEntityTemplate[e].defaultValue;
 });
