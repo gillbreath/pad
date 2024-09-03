@@ -1,5 +1,7 @@
 <script setup>
-const props = defineProps({
+// TODO: if any more components use this, switch to events
+/* eslint vue/no-mutating-props: 0 */
+defineProps({
   crudRecord: Object,
   dataEntityTemplate: Object
 });

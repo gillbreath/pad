@@ -21,7 +21,7 @@ Object.keys(dataEntityTemplate).forEach((e) => {
 
 function createRecord() {
   myStore.collection.push(myRecord);
-  router.push(route.path.replace('\/create', ''));
+  router.push(route.path.replace('/create', ''));
 }
 </script>
 
