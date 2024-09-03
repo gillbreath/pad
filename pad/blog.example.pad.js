@@ -2,6 +2,9 @@ const dataEntities = {
   articles: {
     fields: {
       category: {},
+      datePublished: {
+        inputHint: 'YYYY-MM-DD'
+      },
       slug: {
         inputHint: 'unique-and-url-formatted'
       },
@@ -13,45 +16,48 @@ const dataEntities = {
     preLoad: [
       {
         category: 'marketing',
+        datePublished: '2024-01-02',
         slug: 'an-excellent-mktng-article',
         title: 'Lorem Ipsum',
         text: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
       },
       {
         category: 'tech',
+        datePublished: '2024-02-03',
         slug: 'a-helpful-technology-article',
         title: 'Lorem Ipsum',
         text: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
       },
       {
         category: 'product-management',
+        datePublished: '2024-03-04',
         slug: 'an-insightful-pm-article',
+        title: 'Lorem Ipsum',
+        text: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+      },
+      {
+        category: 'marketing',
+        datePublished: '2024-04-05',
+        slug: 'another-excellent-mktng-article',
+        title: 'Lorem Ipsum',
+        text: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+      },
+      {
+        category: 'tech',
+        datePublished: '2024-05-06',
+        slug: 'helpful-technology-article-followup',
+        title: 'Lorem Ipsum',
+        text: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+      },
+      {
+        category: 'product-management',
+        datePublished: '2024-06-07',
+        slug: 'more-pm-insights-article',
         title: 'Lorem Ipsum',
         text: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
       },
     ]
   },
-  categories: {
-    fields: {
-      name: {
-        defaultValue: 'Category'
-      },
-    },
-    preLoad: [
-      {
-        name: 'Technology',
-        slug: 'tech'
-      },
-      {
-        name: 'Marketing',
-        slug: 'marketing'
-      },
-      {
-        name: 'Product Management',
-        slug: 'product-management'
-      },
-    ]
-  }
 };
 
 const pageRoutes = {
@@ -81,12 +87,61 @@ const pageRoutes = {
     children: [
       {
         elementType: 'p',
-        innerHtml: 'All articles for PAD Blog'
+        innerHtml: 'Articles for PAD Blog:'
+      },
+      {
+        elementType: 'preFabLinkList',
+        options: {
+          collection: [
+            {
+              routerLink: '/blog/latest',
+              text: 'latest',
+            },
+            {
+              routerLink: '/blog/categories',
+              text: 'categories',
+            },
+          ]
+        }
+      }
+    ]
+  },
+  blogCategories: {
+    path: '/blog/categories',
+    title: 'Articles from the PAD Blog grouped by category',
+    children: [
+      {
+        elementType: 'h1',
+        innerHtml: 'categories'
+      },
+      {
+        elementType: 'p',
+        innerHtml: 'Articles from the PAD Blog grouped by category.',
       },
       {
         elementType: 'dataEntity',
         dataEntityKey: 'articles',
-      }
+        renderType: 'table'
+      },
+    ]
+  },
+  blogLatest: {
+    path: '/blog/latest',
+    title: 'The latest articles from the PAD Blog',
+    children: [
+      {
+        elementType: 'h1',
+        innerHtml: 'latest'
+      },
+      {
+        elementType: 'p',
+        innerHtml: 'The latest articles from the PAD Blog.'
+      },
+      {
+        elementType: 'dataEntity',
+        dataEntityKey: 'articles',
+        renderType: 'table'
+      },
     ]
   },
   contact : {
