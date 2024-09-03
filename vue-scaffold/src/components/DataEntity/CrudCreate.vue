@@ -27,8 +27,7 @@ function createRecord() {
 
 <template>
   <BreadCrumbs />
-  <CrudForm :crud-record="myRecord" :data-entity-template="dataEntityTemplate">
-  </CrudForm>
+  <CrudForm :crud-record="myRecord" :data-entity-template="dataEntityTemplate"> </CrudForm>
   <br />
   <a href="" @click.prevent="createRecord()">Create</a>
 </template>

@@ -19,7 +19,10 @@ const myRecord = myStore.collection.find((e) => {
 <template>
   <BreadCrumbs />
   <form>
-    <template v-for="eachField in Object.keys(myRecord).filter(e => e !== 'loopKey')" :key="eachField">
+    <template
+      v-for="eachField in Object.keys(myRecord).filter((e) => e !== 'loopKey')"
+      :key="eachField"
+    >
       <label :for="eachField">{{ eachField }}:</label>&nbsp;
       <div :id="eachField">{{ myRecord[eachField] }}</div>
       <br />

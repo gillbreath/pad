@@ -19,8 +19,7 @@ const myRecord = myStore.collection.find((e) => {
 
 <template>
   <BreadCrumbs />
-  <CrudForm :crud-record="myRecord">
-  </CrudForm>
+  <CrudForm :crud-record="myRecord"> </CrudForm>
   <RouterLink :to="constants.dataEntityPath + props.dataEntityKey + '/' + myRecord.slug"
     >Done</RouterLink
   >
