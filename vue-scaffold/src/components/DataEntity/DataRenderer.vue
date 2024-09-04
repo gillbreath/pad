@@ -1,7 +1,7 @@
 <script setup>
 import LoopKey from '../../loopKey.js';
-import DataLoopUL from '@/components/PreFab/DataLoopUL.vue';
-import DataLoopTable from '@/components/PreFab/DataLoopTable.vue';
+import PreFabLoopUL from '@/components/PreFab/PreFabLoopUL.vue';
+import PreFabLoopTable from '@/components/PreFab/PreFabLoopTable.vue';
 import useGlobalStores from '@/stores/GlobalStores.js';
 
 const props = defineProps({
@@ -17,19 +17,19 @@ if (props.elementsArray) {
 </script>
 
 <template>
-  <DataLoopUL
+  <PreFabLoopUL
     v-if="!props.options.renderType"
     :collection="myStore.collection"
     :options="props.options"
     v-slot:default="slotProps"
   >
     {{ slotProps.eachItem }}
-  </DataLoopUL>
-  <DataLoopTable
+  </PreFabLoopUL>
+  <PreFabLoopTable
     v-if="props.options.renderType === 'table'"
     :collection="myStore.collection"
     :options="props.options"
   >
     <slot v-bind:eachItem="eachItem"></slot>
-  </DataLoopTable>
+  </PreFabLoopTable>
 </template>
