@@ -18,42 +18,42 @@ const dataEntities = {
         category: 'marketing',
         datePublished: '2024-01-02',
         slug: 'an-excellent-mktng-article',
-        title: 'Lorem Ipsum',
+        title: 'An Excellent Marketing Article',
         text: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
       },
       {
         category: 'tech',
         datePublished: '2024-02-03',
         slug: 'a-helpful-technology-article',
-        title: 'Lorem Ipsum',
+        title: 'A Helpful Technology Article',
         text: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
       },
       {
         category: 'product-management',
         datePublished: '2024-03-04',
         slug: 'an-insightful-pm-article',
-        title: 'Lorem Ipsum',
+        title: 'An Insightful PM Article',
         text: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
       },
       {
         category: 'marketing',
         datePublished: '2024-04-05',
         slug: 'another-excellent-mktng-article',
-        title: 'Lorem Ipsum',
+        title: 'Another Excellent Marketing Article',
         text: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
       },
       {
         category: 'tech',
         datePublished: '2024-05-06',
         slug: 'helpful-technology-article-followup',
-        title: 'Lorem Ipsum',
+        title: 'Helpful Technology Article Followup',
         text: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
       },
       {
         category: 'product-management',
         datePublished: '2024-06-07',
         slug: 'more-pm-insights-article',
-        title: 'Lorem Ipsum',
+        title: 'More PM Insights Article',
         text: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
       },
     ]
@@ -140,6 +140,9 @@ const pageRoutes = {
       {
         elementType: 'dataEntity',
         dataEntityKey: 'articles',
+        displayColumns: [
+          'datePublished', 'title'
+        ],
         renderType: 'table'
       },
     ]
