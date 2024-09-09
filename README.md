@@ -20,6 +20,13 @@ Portable Application Definition is a proposal for a convention-driven approach t
 - Cypress will launch. Choose Chrome (other browsers not yet supported)
 - Open localhost:4173
 
+## Features
+- `dataEntities`
+  - data described here will automatically get CRUD functionality, routes & forms
+  - data entities can also be automatically be rendered as tables or ULs
+- `pageRoutes`
+  - describe non-data functionality here
+
 ## Lead maintainer
 The lead maintainer at this time is Elias Carlston. His email is elias@eliascarlston.com.
 
