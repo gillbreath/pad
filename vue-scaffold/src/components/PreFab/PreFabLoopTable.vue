@@ -8,6 +8,7 @@ const props = defineProps({
 });
 const tableSchema = props.options.displayColumns || [];
 const tableCollection = [];
+
 if (props.collection) {
   props.collection.forEach((e) => {
     const eachItem = e;
@@ -24,7 +25,6 @@ if (props.collection) {
   });
   if (props.options.collectionSort) {
     tableCollection.sort(props.options.collectionSort);
-    console.log('tableCollection', tableCollection);
   }
 }
 </script>
