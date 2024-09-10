@@ -7,6 +7,10 @@ const props = defineProps({
   options: Object
 });
 const myStore = useGlobalStores[props.options.dataEntityKey]();
+
+if (props.options.collectionSort) {
+  myStore.collection.sort(props.options.collectionSort);
+}
 </script>
 
 <template>

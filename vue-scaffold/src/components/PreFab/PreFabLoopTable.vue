@@ -7,13 +7,10 @@ const props = defineProps({
   options: Object
 });
 const tableSchema = props.options.displayColumns || [];
-const tableCollection = [];
 
 if (props.collection) {
   props.collection.forEach((e) => {
-    const eachItem = e;
-    eachItem.loopKey = LoopKey();
-    tableCollection.push(eachItem);
+    e.loopKey = LoopKey();
 
     if (!props.options.displayColumns) {
       Object.keys(e).forEach((eachCollectionObjectKey) => {
@@ -23,9 +20,6 @@ if (props.collection) {
       });
     }
   });
-  if (props.options.collectionSort) {
-    tableCollection.sort(props.options.collectionSort);
-  }
 }
 </script>
 
@@ -37,7 +31,7 @@ if (props.collection) {
         {{ eachField }}
       </th>
     </tr>
-    <tr v-for="(eachItem, index) in tableCollection" :key="eachItem.loopKey">
+    <tr v-for="(eachItem, index) in props.collection" :key="eachItem.loopKey">
       <!-- eslint-disable-next-line vue/require-v-for-key -->
       <td v-for="eachField in tableSchema.filter((e) => e !== 'loopKey')">
         {{
