@@ -63,7 +63,6 @@ const dataEntities = {
 const pageRoutes = {
   home: {
     path: '/',
-    title: 'Home',
     children: [
       {
         elementType: 'p',
@@ -73,7 +72,6 @@ const pageRoutes = {
   },
   about: {
     path: '/about',
-    title: 'About',
     children: [
       {
         elementType: 'p',
@@ -83,7 +81,6 @@ const pageRoutes = {
   },
   blog: {
     path: '/blog',
-    title: 'Blog',
     children: [
       {
         elementType: 'p',
@@ -108,7 +105,6 @@ const pageRoutes = {
   },
   blogCategories: {
     path: '/blog/categories',
-    title: 'Articles from the PAD Blog grouped by category',
     children: [
       {
         elementType: 'h1',
@@ -127,7 +123,6 @@ const pageRoutes = {
   },
   blogLatest: {
     path: '/blog/latest',
-    title: 'The latest articles from the PAD Blog',
     children: [
       {
         elementType: 'h1',
@@ -135,7 +130,7 @@ const pageRoutes = {
       },
       {
         elementType: 'p',
-        innerHtml: 'The latest articles from the PAD Blog.'
+        innerHtml: 'The latest articles from the PAD Blog. Demoing 1) sorting by most recent date and 2) custom display columns (col #3 capitalized)'
       },
       {
         elementType: 'dataEntity',
@@ -150,7 +145,6 @@ const pageRoutes = {
   },
   contact : {
     path: '/contact',
-    title: 'Contact',
     children: [
       {
         elementType: 'h1',
