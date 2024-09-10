@@ -1,5 +1,4 @@
 <script setup>
-import LoopKey from '../../loopKey.js';
 import PreFabLoopUL from '@/components/PreFab/PreFabLoopUL.vue';
 import PreFabLoopTable from '@/components/PreFab/PreFabLoopTable.vue';
 import useGlobalStores from '@/stores/GlobalStores.js';
@@ -8,12 +7,6 @@ const props = defineProps({
   options: Object
 });
 const myStore = useGlobalStores[props.options.dataEntityKey]();
-
-if (props.elementsArray) {
-  props.elementsArray.forEach((e) => {
-    e.loopKey = LoopKey();
-  });
-}
 </script>
 
 <template>
