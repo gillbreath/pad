@@ -23,6 +23,5 @@ const myStore = useGlobalStores[props.options.dataEntityKey]();
     :collection="myStore.collection"
     :options="props.options"
   >
-    <slot v-bind:eachItem="eachItem"></slot>
   </PreFabLoopTable>
 </template>
