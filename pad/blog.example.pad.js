@@ -141,7 +141,9 @@ const pageRoutes = {
         elementType: 'dataEntity',
         dataEntityKey: 'articles',
         displayColumns: [
-          'datePublished', 'title'
+          'datePublished', 'title', (eachItem) => {
+            return eachItem.category.replace(/^[a-z]/, (c) => c.toUpperCase());
+          }
         ],
         renderType: 'table'
       },

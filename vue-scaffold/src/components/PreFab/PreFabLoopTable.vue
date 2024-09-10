@@ -37,6 +37,7 @@ if (props.collection) {
             ? eachItem[eachField].substr(0, 20) + (eachItem[eachField].length > 20 ? '...' : '')
             : eachItem[eachField]
         }}
+        {{ typeof eachField === 'function' ? eachField(eachItem) : '' }}
       </td>
       <td v-if="props.options.crudMode === true">
         <RouterLink
