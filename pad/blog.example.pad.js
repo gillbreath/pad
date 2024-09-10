@@ -140,6 +140,7 @@ const pageRoutes = {
       {
         elementType: 'dataEntity',
         dataEntityKey: 'articles',
+        collectionSort: (a, b) => new Date(b.datePublished) - new Date(a.datePublished),
         displayColumns: [
           'datePublished', 'title', (eachItem) => {
             return eachItem.category.replace(/^[a-z]/, (c) => c.toUpperCase());

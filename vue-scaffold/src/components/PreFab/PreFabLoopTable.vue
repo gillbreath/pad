@@ -18,6 +18,10 @@ if (props.collection) {
       });
     }
   });
+  if (props.options.collectionSort) {
+    props.collection.sort(props.options.collectionSort);
+    console.log('props.collection', props.collection)
+  }
 }
 </script>
 
