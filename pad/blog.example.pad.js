@@ -1,8 +1,15 @@
 const dataEntities = {
   articles: {
     fields: {
-      category: {},
+      category: {
+        dataListSuggestions: [
+          'marketing',
+          'tech',
+          'product-management'
+        ]
+      },
       datePublished: {
+        dataType: 'date',
         inputHint: 'YYYY-MM-DD'
       },
       slug: {
