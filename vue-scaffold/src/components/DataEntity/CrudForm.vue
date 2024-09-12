@@ -24,7 +24,10 @@ defineProps({
       v-if="dataEntityTemplate?.[eachField]?.dataListSuggestions"
       :id="eachField + 'DataList'"
     >
-      <template v-for="eachOption in dataEntityTemplate?.[eachField]?.dataListSuggestions">
+      <template
+        v-for="eachOption in dataEntityTemplate?.[eachField]?.dataListSuggestions"
+        :key="eachOption"
+      >
         <option :value="eachOption" />
       </template>
     </datalist>
