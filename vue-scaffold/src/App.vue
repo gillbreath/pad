@@ -1,27 +1,15 @@
 <script setup>
-import { RouterView } from 'vue-router';
-import mainPad from '../../main.pad.js';
-import PreFabHeader from './components/PreFab/PreFabHeader.vue';
-let showCrudControls = false;
-if (mainPad.dataEntities) showCrudControls = true;
+import { ref } from 'vue';
+
+let dynamicLayout = ref('DefaultLayout');
+
+function updateDynamicLayout(layoutName) {
+  dynamicLayout.value = layoutName;
+}
 </script>
 
 <template>
-  <template v-if="mainPad?.padOptions?.header">
-    <PreFabHeader :options="mainPad.padOptions.header.options" />
-  </template>
-  <main>
-    <section>
-      <div class="well">
-        <RouterView />
-      </div>
-    </section>
-  </main>
-  <template v-if="showCrudControls">
-    <div id="crud-controls">
-      <RouterLink :to="'/'">home</RouterLink>
-      &nbsp;&lt;&nbsp;&gt;&nbsp;
-      <RouterLink :to="'/admin/'">admin</RouterLink>
-    </div>
-  </template>
+  <component :is="dynamicLayout">
+    <router-view @update-dynamic-layout="updateDynamicLayout" />
+  </component>
 </template>

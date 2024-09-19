@@ -21,7 +21,8 @@ const pageRoutes = {
             }, ]
         }
       }
-    ]
+    ],
+    layout: 'LoggedOutLayout'
   },
   forgotPassword: {
     path: '/forgot-password',
@@ -30,7 +31,8 @@ const pageRoutes = {
         elementType: 'p',
         innerHtml: 'We\'ll email you a link.'
       }
-    ]
+    ],
+    layout: 'LoggedOutLayout'
   },
   newUser: {
     path: '/new-user',
@@ -39,7 +41,8 @@ const pageRoutes = {
         elementType: 'p',
         innerHtml: 'Create a new user.'
       }
-    ]
+    ],
+    layout: 'LoggedOutLayout'
   },
   home: {
     path: '/home',
@@ -78,6 +81,10 @@ const pageRoutes = {
 const padOptions = {
   header: {
     elementType: 'preFabHeader',
+    loggedOut: {
+      banner: 'Freeware',
+      tagline: 'Powered by Best Friends'
+    },
     options: {
       siteName: 'PAD Blog',
       navLinks: [

@@ -3,10 +3,18 @@ import ElementRenderer from './ElementRenderer.vue';
 import DataRenderer from './DataEntity/DataRenderer.vue';
 import PreFabIndex from './PreFab/PreFabIndex.vue';
 import LoopKey from '../loopKey.js';
+import { onUpdated } from 'vue';
+
+const emit = defineEmits(['updateDynamicLayout']);
 
 const props = defineProps({
-  elementsArray: Array
+  elementsArray: Array,
+  layout: String
 });
+onUpdated(() => {
+  emit('updateDynamicLayout', props.layout);
+});
+
 props.elementsArray.forEach((e) => {
   e.loopKey = LoopKey();
 });

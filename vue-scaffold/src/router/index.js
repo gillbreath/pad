@@ -19,7 +19,8 @@ if (mainPad.pageRoutes) {
       path: pageRouteValue.path || '/' + pageRouteKey,
       component: PadRenderer,
       props: {
-        elementsArray: pageRouteValue.children
+        elementsArray: pageRouteValue.children,
+        layout: pageRouteValue.layout || 'DefaultLayout'
       }
     });
   });
