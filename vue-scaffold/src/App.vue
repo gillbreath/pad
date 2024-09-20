@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 
-let dynamicLayout = ref('DefaultLayout');
+let dynamicLayout = ref('LoggedOutLayout');
 
 function updateDynamicLayout(layoutName) {
   dynamicLayout.value = layoutName;
