@@ -181,24 +181,29 @@ const pageRoutes = {
   }
 };
 const padOptions = {
-  header: {
-    elementType: 'preFabHeader',
-    options: {
-      siteName: 'PAD Blog',
-      navLinks: [
-        {
-          routerLink: '/about',
-          text: 'about'
-        },
-        {
-          routerLink: '/blog',
-          text: 'blog'
-        },
-        {
-          routerLink: '/contact',
-          text: 'contact'
-        },
-      ]
+  appName: 'PAD Blog',
+  layouts: {
+    DefaultLayout: {
+      header: [{
+        elementType: 'preFabHeader',
+        options: {
+          siteName: 'PAD Blog',
+          navLinks: [
+            {
+              routerLink: '/about',
+              text: 'about'
+            },
+            {
+              routerLink: '/blog',
+              text: 'blog'
+            },
+            {
+              routerLink: '/contact',
+              text: 'contact'
+            },
+          ]
+        }
+      }]
     }
   }
 };

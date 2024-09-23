@@ -79,29 +79,37 @@ const pageRoutes = {
   },
 };
 const padOptions = {
-  header: {
-    elementType: 'preFabHeader',
-    loggedOut: {
-      banner: 'Freeware',
-      tagline: 'Powered by Best Friends'
+  appName: 'PAD Blog',
+  layouts: {
+    DefaultLayout: {
+      header: [{
+        elementType: 'preFabHeader',
+        options: {
+          navLinks: [
+            {
+              routerLink: '/about',
+              text: 'about'
+            },
+            {
+              routerLink: '/blog',
+              text: 'blog'
+            },
+            {
+              routerLink: '/contact',
+              text: 'contact'
+            },
+          ]
+        }
+      }]
     },
-    options: {
-      siteName: 'PAD Blog',
-      navLinks: [
+    LoggedOutLayout: {
+      header: [
         {
-          routerLink: '/about',
-          text: 'about'
-        },
-        {
-          routerLink: '/blog',
-          text: 'blog'
-        },
-        {
-          routerLink: '/contact',
-          text: 'contact'
-        },
+          elementType: 'h1',
+          innerHtml: 'FreeWare'
+        }
       ]
-    }
+    },
   }
 };
 

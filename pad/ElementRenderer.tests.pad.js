@@ -1,25 +1,29 @@
 export default {
   padOptions: {
-    header: {
-      elementType: 'preFabHeader',
-      options: {
-        logoPictureAltText: 'img alt text',
-        siteLogoImageSrc: 'src',
-        siteName: 'PAD Blog',
-        navLinkList: [
-          {
-            routerLink: '/about',
-            text: 'about'
-          },
-          {
-            routerLink: '/blog',
-            text: 'blog'
-          },
-          {
-            routerLink: '/contact',
-            text: 'contact'
-          },
-        ]
+    layouts: {
+      DefaultLayout: {
+        header: [{
+          elementType: 'preFabHeader',
+          options: {
+            logoPictureAltText: 'img alt text',
+            siteLogoImageSrc: 'src',
+            siteName: 'PAD Blog',
+            navLinkList: [
+              {
+                routerLink: '/about',
+                text: 'about'
+              },
+              {
+                routerLink: '/blog',
+                text: 'blog'
+              },
+              {
+                routerLink: '/contact',
+                text: 'contact'
+              },
+            ]
+          }
+        }]
       }
     }
   },
