@@ -6,13 +6,13 @@ header .home-links {
   flex-direction: row;
   align-items: center;
 }
-header .well,
-section .well {
+header .content-container,
+main .content-container {
   margin: 0 auto;
   max-width: 800px;
   width: 80%;
 }
-header .well {
+header .content-container {
   align-items: center;
   display: flex;
   justify-content: space-between;
@@ -24,7 +24,7 @@ nav {
   text-align: right;
   width: 6em;
 }
-section .well {
+main .content-container {
   max-width: 600px;
 }
 ul.breadcrumbs {
@@ -55,10 +55,4 @@ ul.breadcrumbs li::last-child {
 }
 .home-links {
   min-height: 100px;
-}
-
-#crud-controls {
-  position: absolute;
-  bottom: 3em;
-  left: 45%;
 }

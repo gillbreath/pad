@@ -22,7 +22,7 @@ const headerPad = [
     children: [
       {
         elementType: 'div',
-        class: 'well',
+        class: 'content-container',
         children: [
           {
             elementType: 'a',

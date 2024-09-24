@@ -72,7 +72,8 @@ const pageRoutes = {
     path: '/',
     children: [
       {
-        elementType: 'p',
+        elementType: 'div',
+        class: 'content-container',
         innerHtml: 'Welcome to PAD Blog, an example site.'
       }
     ]

@@ -18,7 +18,9 @@ const pageRoutes = {
             {
               routerLink: '/new-user',
               text: 'New user?',
-            }, ]
+            },
+          ],
+          ulClasses: 'content-container'
         }
       }
     ],

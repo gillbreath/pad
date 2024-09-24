@@ -20,6 +20,7 @@ if (props.elementsArray) {
       <PadRenderer v-if="eachEl.children" :elements-array="eachEl.children" />
     </a>
     <div v-if="eachEl.elementType === 'div'" :class="eachEl.class">
+      {{ eachEl.innerHtml }}
       <PadRenderer v-if="eachEl.children" :elements-array="eachEl.children" />
     </div>
     <header v-if="eachEl.elementType === 'header'">
