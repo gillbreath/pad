@@ -1,4 +1,19 @@
-const dataEntities = undefined;
+const dataEntities = {
+  logins: {
+    fields: {
+      username: {
+        dataType: 'email'
+      },
+      password: {
+        dataType: 'password'
+      },
+      confirmPassword: {
+        dataType: 'password'
+      }
+    }
+  }
+};
+
 const pageRoutes = {
   root: {
     path: '/',
@@ -19,8 +34,7 @@ const pageRoutes = {
               routerLink: '/new-user',
               text: 'New user?',
             },
-          ],
-          ulClasses: 'content-container'
+          ]
         }
       }
     ],
@@ -42,6 +56,11 @@ const pageRoutes = {
       {
         elementType: 'p',
         innerHtml: 'Create a new user.'
+      },
+      {
+        elementType: 'dataEntity',
+        dataEntityKey: 'logins',
+        renderType: 'create'
       }
     ],
     layout: 'LoggedOutLayout'
@@ -81,7 +100,7 @@ const pageRoutes = {
   },
 };
 const padOptions = {
-  appName: 'PAD Blog',
+  appName: 'Simple Login',
   layouts: {
     DefaultLayout: {
       header: [{
@@ -108,7 +127,8 @@ const padOptions = {
       header: [
         {
           elementType: 'h1',
-          innerHtml: 'FreeWare'
+          class: 'content-container',
+          innerHtml: 'Simple Login'
         }
       ]
     },

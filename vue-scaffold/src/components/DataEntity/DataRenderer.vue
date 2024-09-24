@@ -2,6 +2,7 @@
 import PreFabLoopUL from '@/components/PreFab/PreFabLoopUL.vue';
 import PreFabLoopTable from '@/components/PreFab/PreFabLoopTable.vue';
 import useGlobalStores from '@/stores/GlobalStores.js';
+import CrudCreate from '@/components/DataEntity/CrudCreate.vue';
 
 const props = defineProps({
   options: Object
@@ -28,4 +29,9 @@ if (props.options.collectionSort) {
     :options="props.options"
   >
   </PreFabLoopTable>
+  <CrudCreate
+    :data-entity-key="props.options.dataEntityKey"
+    v-if="props.options.renderType === 'create'"
+  >
+  </CrudCreate>
 </template>
