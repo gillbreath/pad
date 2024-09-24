@@ -3,17 +3,26 @@ import ElementRenderer from './ElementRenderer.vue';
 import DataRenderer from './DataEntity/DataRenderer.vue';
 import PreFabIndex from './PreFab/PreFabIndex.vue';
 import LoopKey from '../loopKey.js';
-import { onUpdated } from 'vue';
+import { onMounted, watch } from 'vue';
+import { useRoute } from 'vue-router';
 
+const route = useRoute();
 const emit = defineEmits(['updateDynamicLayout']);
 
 const props = defineProps({
   elementsArray: Array,
   layout: String
 });
-onUpdated(() => {
+
+function emitUpdateLayout() {
   emit('updateDynamicLayout', props.layout);
-});
+}
+
+watch(
+  () => route.path,
+  () => emitUpdateLayout()
+);
+onMounted(() => emitUpdateLayout());
 
 props.elementsArray.forEach((e) => {
   e.loopKey = LoopKey();
