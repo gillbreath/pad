@@ -11,14 +11,11 @@ const props = defineProps({
 });
 const myStore = useGlobalStores[props.dataEntityKey]();
 
-const myRecord = myStore.collection.find((e) => {
-  return e.slug === route.params.slug;
-});
+//const myRecord = myStore.collection.find((e) => {
+//  return e?.slug === route.params.slug;
+//});
 </script>
 
 <template>
-  <CrudForm :crud-record="myRecord"> </CrudForm>
-  <RouterLink :to="constants.dataEntityPath + props.dataEntityKey + '/' + myRecord.slug"
-    >Done</RouterLink
-  >
+  <CrudForm :crud-schema="mySchema"> </CrudForm>
 </template>

@@ -1,7 +1,6 @@
 <script setup>
 import useGlobalStores from '@/stores/GlobalStores.js';
 import { useRoute, useRouter } from 'vue-router';
-import BreadCrumbs from '../PreFab/BreadCrumbs.vue';
 import mainPad from '../../../../main.pad.js';
 import CrudForm from './CrudForm.vue';
 
@@ -20,14 +19,15 @@ Object.keys(dataEntityTemplate).forEach((e) => {
 });
 
 function createRecord() {
+  // TODO: validation
   myStore.collection.push(myRecord);
-  router.push(route.path.replace('/create', ''));
+  // TODO: route on success/failure
+  router.push('/');
 }
 </script>
 
 <template>
-  <BreadCrumbs />
   <CrudForm :crud-record="myRecord" :data-entity-template="dataEntityTemplate"> </CrudForm>
   <br />
-  <a href="" @click.prevent="createRecord()">Create</a>
+  <button @click.prevent="createRecord()">Submit</button>
 </template>
