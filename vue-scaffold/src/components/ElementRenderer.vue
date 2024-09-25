@@ -54,6 +54,13 @@ if (props.elementsArray) {
       {{ eachEl.innerHtml }}
       <PadRenderer v-if="eachEl.children" :elements-array="eachEl.children" />
     </p>
+    <RouterLink
+        v-if="eachEl.elementType === 'routerLink'"
+        :to="eachEl.to"
+    >
+      {{ eachEl.innerHtml }}
+      <PadRenderer v-if="eachEl.children" :elements-array="eachEl.children" />
+    </RouterLink>
     <section v-if="eachEl.elementType === 'section'" :class="eachEl.class" :id="eachEl.id">
       <PadRenderer v-if="eachEl.children" :elements-array="eachEl.children" />
     </section>
