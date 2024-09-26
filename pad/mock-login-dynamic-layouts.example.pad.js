@@ -181,7 +181,7 @@ const pageRoutes = {
   },
 };
 const padOptions = {
-  appName: 'Simple Login',
+  appName: 'Mock Login',
   layouts: {
     DefaultLayout: {
       header: [{
@@ -209,7 +209,7 @@ const padOptions = {
         {
           elementType: 'h1',
           class: 'content-container',
-          innerHtml: 'Simple Login'
+          innerHtml: 'Mock Login'
         }
       ]
     },
