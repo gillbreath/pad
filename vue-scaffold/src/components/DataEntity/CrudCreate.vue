@@ -8,16 +8,19 @@ const route = useRoute();
 const router = useRouter();
 
 const props = defineProps({
-  dataEntityKey: String
+  options: Object
 });
-const myStore = useGlobalStores[props.dataEntityKey]();
-const dataEntityTemplate = mainPad.dataEntities[props.dataEntityKey].fields;
+const myStore = useGlobalStores[props.options.dataEntityKey]();
+const dataEntityTemplate = mainPad.dataEntities[props.options.dataEntityKey].fields;
 const myRecord = {};
 
 Object.keys(dataEntityTemplate).forEach((e) => {
   myRecord[e] = dataEntityTemplate[e].defaultValue;
 });
 
+function submitHandler() {
+  console.log('this', this);
+}
 function createRecord() {
   // TODO: validation
   myStore.collection.push(myRecord);
@@ -27,7 +30,13 @@ function createRecord() {
 </script>
 
 <template>
-  <CrudForm :crud-record="myRecord" :data-entity-template="dataEntityTemplate"> </CrudForm>
-  <br />
-  <button @click.prevent="createRecord()">Submit</button>
+  <form>
+    <CrudForm
+      v-for="eachFormField in props.options.children"
+      :field-schema="eachFormField"
+      :data-entity-template="dataEntityTemplate"
+      :submit-handler="submitHandler"
+    >
+    </CrudForm>
+  </form>
 </template>

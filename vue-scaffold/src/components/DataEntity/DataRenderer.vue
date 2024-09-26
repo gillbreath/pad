@@ -31,17 +31,8 @@ if (props.options.collectionSort) {
     :options="props.options"
   >
   </PreFabLoopTable>
-  <CrudCreate
-    v-if="props.options.renderType === 'create'"
-    :data-entity-key="props.options.dataEntityKey"
-  >
-  </CrudCreate>
-  <CrudFind
-    v-if="props.options.renderType === 'find'"
-    :data-entity-key="props.options.dataEntityKey"
-    :crud-schema="props.options.children"
-  >
-  </CrudFind>
+  <CrudCreate v-if="props.options.renderType === 'create'" :options="props.options"> </CrudCreate>
+  <CrudFind v-if="props.options.renderType === 'find'" :options="props.options"> </CrudFind>
   <CrudUpdate
     v-if="props.options.renderType === 'update'"
     :data-entity-key="props.options.dataEntityKey"

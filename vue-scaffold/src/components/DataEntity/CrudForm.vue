@@ -3,35 +3,41 @@
 /* eslint vue/no-mutating-props: 0 */
 defineProps({
   crudRecord: Object,
-  dataEntityTemplate: Object
+  fieldSchema: Object,
+  dataEntityTemplate: Object,
+  submitHandler: Function
 });
 </script>
 
 <template>
-  <template
-    v-for="eachField in Object.keys(crudRecord).filter((e) => e !== 'loopKey')"
-    :key="eachField"
-  >
-    <label :for="eachField">{{ eachField }}:</label>&nbsp;
-    <input
-      :id="eachField"
-      :list="dataEntityTemplate?.[eachField]?.dataListSuggestions ? eachField + 'DataList' : ''"
-      :placeholder="dataEntityTemplate?.[eachField]?.inputHint"
-      :type="dataEntityTemplate?.[eachField]?.dataType || 'text'"
-      v-model="crudRecord[eachField]"
-    />
-    <datalist
-      v-if="dataEntityTemplate?.[eachField]?.dataListSuggestions"
-      :id="eachField + 'DataList'"
-    >
-      <template
-        v-for="eachOption in dataEntityTemplate?.[eachField]?.dataListSuggestions"
-        :key="eachOption"
+  <!--    <label :for="eachField">{{ eachField }}:</label>&nbsp; -->
+  <template v-if="fieldSchema.elementType.substr(0, 4) === 'crud'">
+    <template v-if="fieldSchema.options?.type === 'input'">
+      <input
+        :id="fieldSchema.options.name"
+        :list="
+          dataEntityTemplate?.[fieldSchema.options.name]?.dataListSuggestions
+            ? fieldSchema.options.name + 'DataList'
+            : ''
+        "
+        :placeholder="dataEntityTemplate?.[fieldSchema.options.name]?.inputHint"
+        :type="dataEntityTemplate?.[fieldSchema.options.name]?.dataType || 'text'"
+        :value="crudRecord?.[fieldSchema.options.name]"
+      />
+      <datalist
+        v-if="dataEntityTemplate?.[fieldSchema.options.name]?.dataListSuggestions"
+        :id="fieldSchema.options.name + 'DataList'"
       >
-        <option :value="eachOption" />
-      </template>
-    </datalist>
-    <br />
+        <template
+          v-for="eachOption in dataEntityTemplate?.[fieldSchema.options.name]?.dataListSuggestions"
+          :key="eachOption"
+        >
+          <option :value="eachOption" />
+        </template>
+      </datalist>
+    </template>
   </template>
-  <br />
+  <template v-if="fieldSchema.options?.type === 'submit'">
+    <button @click.prevent="submitHandler()">{{ fieldSchema.options?.buttonText }}</button>
+  </template>
 </template>

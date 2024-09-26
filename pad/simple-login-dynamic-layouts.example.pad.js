@@ -2,13 +2,16 @@ const dataEntities = {
   logins: {
     fields: {
       username: {
-        dataType: 'email'
+        dataType: 'email',
+        inputHint: 'username'
       },
       password: {
-        dataType: 'password'
+        dataType: 'password',
+        inputHint: 'password'
       },
       confirmPassword: {
-        dataType: 'password'
+        dataType: 'password',
+        inputHint: 'confirm password'
       }
     }
   }
@@ -19,23 +22,46 @@ const pageRoutes = {
     path: '/',
     children: [
       {
-        elementType: 'preFabLinkList',
-        options: {
-          collection: [
-            {
-              routerLink: '/home',
-              text: 'Mock Login',
-            },
-            {
-              routerLink: '/forgot-password',
-              text: 'Forgot password?',
-            },
-            {
-              routerLink: '/new-user',
-              text: 'New user?',
-            },
-          ]
-        }
+        elementType: 'h3',
+        innerHtml: 'SIGN IN',
+      },
+      {
+        elementType: 'dataEntity',
+        children: [
+          {
+            elementType: 'crudField',
+            options: {
+              type: 'input',
+              name: 'username'
+            }
+          },
+          {
+            elementType: 'crudField',
+            options: {
+              type: 'input',
+              name: 'password'
+            }
+          },
+          {
+            elementType: 'routerLink',
+            routerLink: '/forgot-password',
+            text: 'Forgot password',
+          },
+          {
+            elementType: 'crudControl',
+            options: {
+              type: 'submit',
+              buttonText: 'SIGN IN',
+            }
+          }
+        ],
+        dataEntityKey: 'logins',
+        renderType: 'find'
+      },
+      {
+        elementType: 'routerLink',
+        to: '/new-user',
+        innerHtml: 'New user?'
       }
     ],
     layout: 'LoggedOutLayout'
@@ -45,7 +71,32 @@ const pageRoutes = {
     children: [
       {
         elementType: 'p',
-        innerHtml: 'We\'ll email you a link.'
+        innerHtml: 'TBD: email a magic link.'
+      },
+      {
+        elementType: 'dataEntity',
+        dataEntityKey: 'logins',
+        fields: ['username'],
+        renderType: 'find'
+      }
+    ],
+    layout: 'LoggedOutLayout'
+  },
+  resetPassword: {
+    path: '/reset-password',
+    children: [
+      {
+        elementType: 'p',
+        innerHtml: 'Reset your password.'
+      },
+      {
+        elementType: 'dataEntity',
+        dataEntityKey: 'logins',
+        fields: {
+          display: ['username'],
+          update: ['password', 'confirmPassword'],
+        },
+        renderType: 'update'
       }
     ],
     layout: 'LoggedOutLayout'
@@ -59,9 +110,39 @@ const pageRoutes = {
       },
       {
         elementType: 'dataEntity',
+        children: [
+          {
+            elementType: 'crudField',
+            options: {
+              type: 'input',
+              name: 'username'
+            }
+          },
+          {
+            elementType: 'crudField',
+            options: {
+              type: 'input',
+              name: 'password'
+            }
+          },
+          {
+            elementType: 'crudField',
+            options: {
+              type: 'input',
+              name: 'confirmPassword'
+            }
+          },
+          {
+            elementType: 'crudControl',
+            options: {
+              type: 'submit',
+              buttonText: 'CREATE USER',
+            }
+          }
+        ],
         dataEntityKey: 'logins',
         renderType: 'create'
-      }
+      },
     ],
     layout: 'LoggedOutLayout'
   },
