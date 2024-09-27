@@ -8,11 +8,17 @@ defineProps({
 </script>
 
 <template>
-  <template v-if="fieldSchema.elementType.substr(0,4) === 'form'">
-  <InputField v-if="fieldSchema.options.type === 'input'" :field-name="fieldSchema.options.name" :data-entity-template="dataEntityTemplate" />
-  <button v-if="fieldSchema.options.type === 'submit'">{{ fieldSchema.options.buttonText }}</button>
+  <template v-if="fieldSchema.elementType.substr(0, 4) === 'form'">
+    <InputField
+      v-if="fieldSchema.options.type === 'input'"
+      :field-name="fieldSchema.options.name"
+      :data-entity-template="dataEntityTemplate"
+    />
+    <button v-if="fieldSchema.options.type === 'submit'">
+      {{ fieldSchema.options.buttonText }}
+    </button>
   </template>
   <template v-else>
-    <PadRenderer :elements-array="[ fieldSchema ]" />
+    <PadRenderer :elements-array="[fieldSchema]" />
   </template>
 </template>

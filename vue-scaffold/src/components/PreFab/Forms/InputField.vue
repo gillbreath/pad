@@ -1,5 +1,5 @@
 <script setup>
-const props = defineProps({
+defineProps({
   fieldName: String,
   dataEntityTemplate: Object
 });
@@ -9,11 +9,7 @@ const myModel = defineModel();
 <template>
   <input
     :id="fieldName"
-    :list="
-      dataEntityTemplate?.[fieldName]?.dataListSuggestions
-        ? fieldName + 'DataList'
-        : ''
-    "
+    :list="dataEntityTemplate?.[fieldName]?.dataListSuggestions ? fieldName + 'DataList' : ''"
     :placeholder="dataEntityTemplate?.[fieldName]?.inputHint"
     :type="dataEntityTemplate?.[fieldName]?.dataType || 'text'"
     v-model="myModel"
