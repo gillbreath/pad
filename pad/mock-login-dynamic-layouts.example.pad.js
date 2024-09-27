@@ -29,14 +29,14 @@ const pageRoutes = {
         elementType: 'dataEntity',
         children: [
           {
-            elementType: 'crudField',
+            elementType: 'formField',
             options: {
               type: 'input',
               name: 'username'
             }
           },
           {
-            elementType: 'crudField',
+            elementType: 'formField',
             options: {
               type: 'input',
               name: 'password'
@@ -45,10 +45,10 @@ const pageRoutes = {
           {
             elementType: 'routerLink',
             routerLink: '/forgot-password',
-            text: 'Forgot password',
+            innerHtml: 'Forgot password',
           },
           {
-            elementType: 'crudControl',
+            elementType: 'formControl',
             options: {
               type: 'submit',
               buttonText: 'SIGN IN',
@@ -112,28 +112,28 @@ const pageRoutes = {
         elementType: 'dataEntity',
         children: [
           {
-            elementType: 'crudField',
+            elementType: 'formField',
             options: {
               type: 'input',
               name: 'username'
             }
           },
           {
-            elementType: 'crudField',
+            elementType: 'formField',
             options: {
               type: 'input',
               name: 'password'
             }
           },
           {
-            elementType: 'crudField',
+            elementType: 'formField',
             options: {
               type: 'input',
               name: 'confirmPassword'
             }
           },
           {
-            elementType: 'crudControl',
+            elementType: 'formControl',
             options: {
               type: 'submit',
               buttonText: 'CREATE USER',

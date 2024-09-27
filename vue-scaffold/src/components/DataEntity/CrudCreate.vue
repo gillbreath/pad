@@ -2,7 +2,7 @@
 import useGlobalStores from '@/stores/GlobalStores.js';
 import { useRoute, useRouter } from 'vue-router';
 import mainPad from '../../../../main.pad.js';
-import CrudForm from './CrudForm.vue';
+import FormRenderer from '@/components/PreFab/Forms/FormRenderer.vue';
 
 const route = useRoute();
 const router = useRouter();
@@ -18,25 +18,27 @@ Object.keys(dataEntityTemplate).forEach((e) => {
   myRecord[e] = dataEntityTemplate[e].defaultValue;
 });
 
-function submitHandler() {
-  console.log('this', this);
-}
-function createRecord() {
+function submitHandler(e) {
   // TODO: validation
-  myStore.collection.push(myRecord);
+  Array.from(e.target.elements).forEach(eachField => {
+    myRecord[eachField.id] = eachField.value;
+  })
+  createRecord(myRecord)
   // TODO: route on success/failure
-  router.push('/');
+  // router.push('/');
+}
+function createRecord(record) {
+  myStore.collection.push(record);
 }
 </script>
 
 <template>
-  <form>
-    <CrudForm
+  <form @submit.prevent="submitHandler">
+    <FormRenderer
       v-for="eachFormField in props.options.children"
       :field-schema="eachFormField"
       :data-entity-template="dataEntityTemplate"
-      :submit-handler="submitHandler"
     >
-    </CrudForm>
+    </FormRenderer>
   </form>
 </template>
