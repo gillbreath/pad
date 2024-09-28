@@ -2,7 +2,6 @@ import { defineStore } from 'pinia';
 import mainPad from '../../../main.pad.js';
 import validationRecipes from '@/stores/recipes/validationRecipes.js';
 
-
 const useGlobalStores = {};
 
 if (mainPad.dataEntities) {
@@ -38,10 +37,11 @@ if (mainPad.dataEntities) {
         isValid(record) {
           let failedValidationMessages = [];
 
-          Object.keys(record).forEach(eachField => {
-            dataEntityValue.fields[eachField].validations.forEach(eachValidation => {
+          Object.keys(record).forEach((eachField) => {
+            dataEntityValue.fields[eachField].validations.forEach((eachValidation) => {
               failedValidationMessages.push(
-                validationRecipes[eachValidation](eachField, record[eachField]));
+                validationRecipes[eachValidation](eachField, record[eachField])
+              );
             });
           });
 
