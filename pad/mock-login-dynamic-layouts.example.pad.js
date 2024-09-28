@@ -3,15 +3,24 @@ const dataEntities = {
     fields: {
       username: {
         dataType: 'email',
-        inputHint: 'username'
+        inputHint: 'username',
+        validations: [
+          'notEmpty'
+        ]
       },
       password: {
         dataType: 'password',
-        inputHint: 'password'
+        inputHint: 'password',
+        validations: [
+          'notEmpty'
+        ]
       },
       confirmPassword: {
         dataType: 'password',
-        inputHint: 'confirm password'
+        inputHint: 'confirm password',
+        validations: [
+          'notEmpty'
+        ]
       }
     }
   }

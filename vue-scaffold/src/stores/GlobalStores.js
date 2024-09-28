@@ -1,5 +1,7 @@
 import { defineStore } from 'pinia';
 import mainPad from '../../../main.pad.js';
+import validationRecipes from '@/stores/recipes/validationRecipes.js';
+
 
 const useGlobalStores = {};
 
@@ -20,11 +22,12 @@ if (mainPad.dataEntities) {
       actions: {
         create(record) {
           const validatePromise = new Promise((resolve, reject) => {
-            if (this.isValid()) {
+            const failedValidationMessages = this.isValid(record);
+            if (failedValidationMessages.length === 0) {
               this.collection.push(record);
               return resolve();
             }
-            return reject({ error: 'Too many rappers, not enough MCs' });
+            return reject(failedValidationMessages);
           });
 
           return validatePromise;
@@ -32,9 +35,17 @@ if (mainPad.dataEntities) {
         delete(index) {
           this.collection.splice(index, 1);
         },
-        isValid() {
-          // record
-          return true;
+        isValid(record) {
+          let failedValidationMessages = [];
+
+          Object.keys(record).forEach(eachField => {
+            dataEntityValue.fields[eachField].validations.forEach(eachValidation => {
+              failedValidationMessages.push(
+                validationRecipes[eachValidation](eachField, record[eachField]));
+            });
+          });
+
+          return failedValidationMessages;
         }
       }
     });

@@ -22,15 +22,16 @@ Object.keys(dataEntityTemplate).forEach((e) => {
 
 async function submitHandler(e) {
   Array.from(e.target.elements).forEach((eachField) => {
-    myRecord[eachField.id] = eachField.value;
+    if (eachField.id) {
+      myRecord[eachField.id] = eachField.value;
+    }
   });
 
   try {
     await myStore.create(myRecord);
-    console.log('success');
     // router.push('/');
   } catch (e) {
-    console.log('fail');
+    // trigger error message display
   }
 }
 </script>
