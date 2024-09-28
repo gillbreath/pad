@@ -17,12 +17,24 @@ if (mainPad.dataEntities) {
 
     useGlobalStores[dataEntityKey] = defineStore(dataEntityKey, {
       state: () => ({ collection: dataEntityValue.preLoad || [] }),
-      getters: {
-        doubleCount: (state) => state.count * 2
-      },
       actions: {
-        remove(index) {
+        create(record) {
+          const validatePromise = new Promise((resolve, reject) => {
+            if (this.isValid()) {
+              this.collection.push(record);
+              return resolve();
+            }
+            return reject({ error: 'Too many rappers, not enough MCs' });
+          });
+
+          return validatePromise;
+        },
+        delete(index) {
           this.collection.splice(index, 1);
+        },
+        isValid() {
+          // record
+          return true;
         }
       }
     });

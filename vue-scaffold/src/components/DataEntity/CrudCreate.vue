@@ -20,17 +20,18 @@ Object.keys(dataEntityTemplate).forEach((e) => {
   myRecord[e] = dataEntityTemplate[e].defaultValue;
 });
 
-function submitHandler(e) {
-  // TODO: validation
+async function submitHandler(e) {
   Array.from(e.target.elements).forEach((eachField) => {
     myRecord[eachField.id] = eachField.value;
   });
-  createRecord(myRecord);
-  // TODO: route on success/failure
-  // router.push('/');
-}
-function createRecord(record) {
-  myStore.collection.push(record);
+
+  try {
+    await myStore.create(myRecord);
+    console.log('success');
+    // router.push('/');
+  } catch (e) {
+    console.log('fail');
+  }
 }
 </script>
 
