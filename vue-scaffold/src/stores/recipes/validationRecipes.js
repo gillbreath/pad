@@ -1,7 +1,7 @@
 const validationRecipes = {
   notEmpty(fieldName, value) {
     if (value) return;
-    return { error: fieldName + ' must not be empty' };
+    return { errorMessage: fieldName + ' must not be empty' };
   }
 };
 

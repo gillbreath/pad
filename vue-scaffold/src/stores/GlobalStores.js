@@ -26,7 +26,9 @@ if (mainPad.dataEntities) {
               this.collection.push(record);
               return resolve();
             }
-            return reject(failedValidationMessages);
+            return reject({
+              errors: failedValidationMessages
+            });
           });
 
           return validatePromise;
@@ -39,9 +41,13 @@ if (mainPad.dataEntities) {
 
           Object.keys(record).forEach((eachField) => {
             dataEntityValue.fields[eachField].validations.forEach((eachValidation) => {
-              failedValidationMessages.push(
-                validationRecipes[eachValidation](eachField, record[eachField])
-              );
+              const eachFailedValidationMessage = validationRecipes[eachValidation](eachField, record[eachField]);
+
+              if (eachFailedValidationMessage) {
+                failedValidationMessages.push(
+                  validationRecipes[eachValidation](eachField, record[eachField])
+                );
+              }
             });
           });
 

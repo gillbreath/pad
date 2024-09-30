@@ -150,7 +150,10 @@ const pageRoutes = {
           }
         ],
         dataEntityKey: 'logins',
-        renderType: 'create'
+        renderType: 'create',
+        createOptions: {
+          successRedirect: '/'
+        }
       },
     ],
     layout: 'LoggedOutLayout'

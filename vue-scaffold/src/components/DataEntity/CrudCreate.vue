@@ -3,6 +3,8 @@ import useGlobalStores from '@/stores/GlobalStores.js';
 import mainPad from '../../../../main.pad.js';
 import FormRenderer from '@/components/PreFab/Forms/FormRenderer.vue';
 import LoopKey from '@/loopKey.js';
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 
 const props = defineProps({
   options: Object
@@ -15,12 +17,16 @@ if (props.options.children) {
 const myStore = useGlobalStores[props.options.dataEntityKey]();
 const dataEntityTemplate = mainPad.dataEntities[props.options.dataEntityKey].fields;
 const myRecord = {};
+const router = useRouter();
+let errorMessages = ref([]);
 
 Object.keys(dataEntityTemplate).forEach((e) => {
   myRecord[e] = dataEntityTemplate[e].defaultValue;
 });
 
 async function submitHandler(e) {
+  errorMessages.value.length = 0;
+
   Array.from(e.target.elements).forEach((eachField) => {
     if (eachField.id) {
       myRecord[eachField.id] = eachField.value;
@@ -29,15 +35,26 @@ async function submitHandler(e) {
 
   try {
     await myStore.create(myRecord);
-    // router.push('/');
+    if (props.options.createOptions?.successRedirect) {
+      router.push(props.options.createOptions.successRedirect);
+    }
   } catch (e) {
     // trigger error message display
+    if (e?.errors.length > 0) {
+      errorMessages.value = e.errors;
+    }
   }
 }
 </script>
 
 <template>
   <form @submit.prevent="submitHandler">
+    <template v-if="errorMessages.length > 0">
+      <div v-for="eachErrorMessage in errorMessages">
+        {{ eachErrorMessage?.errorMessage }}
+      </div>
+      <br/>
+    </template>
     <FormRenderer
       v-for="eachFormField in props.options.children"
       :key="eachFormField.loopKey"
