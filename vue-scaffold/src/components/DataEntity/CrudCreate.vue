@@ -51,9 +51,8 @@ async function submitHandler(e) {
 <template>
   <form @submit.prevent="submitHandler">
     <template v-if="errorMessages.length > 0">
-<CrudErrorMessages :error-messages="errorMessages">
-</CrudErrorMessages>
-      <br/>
+      <CrudErrorMessages :error-messages="errorMessages"> </CrudErrorMessages>
+      <br />
     </template>
     <FormRenderer
       v-for="eachFormField in props.options.children"
