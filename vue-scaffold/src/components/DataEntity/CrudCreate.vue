@@ -5,6 +5,7 @@ import FormRenderer from '@/components/PreFab/Forms/FormRenderer.vue';
 import LoopKey from '@/loopKey.js';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+import CrudErrorMessages from './CrudErrorMessages.vue';
 
 const props = defineProps({
   options: Object
@@ -50,9 +51,8 @@ async function submitHandler(e) {
 <template>
   <form @submit.prevent="submitHandler">
     <template v-if="errorMessages.length > 0">
-      <div v-for="eachErrorMessage in errorMessages">
-        {{ eachErrorMessage?.errorMessage }}
-      </div>
+<CrudErrorMessages :error-messages="errorMessages">
+</CrudErrorMessages>
       <br/>
     </template>
     <FormRenderer
