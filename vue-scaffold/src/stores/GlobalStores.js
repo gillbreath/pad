@@ -47,9 +47,7 @@ if (mainPad.dataEntities) {
               return searchSucceeded ? eachRecord : '';
             });
 
-            if (!foundRecords?.length) reject({ errors: [
-              { errorMessage: 'No records found.' }
-            ]});
+            if (!foundRecords?.length) reject({ errors: [{ errorMessage: 'No records found.' }] });
             resolve(foundRecords);
           });
 
