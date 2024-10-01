@@ -65,7 +65,10 @@ const pageRoutes = {
           }
         ],
         dataEntityKey: 'logins',
-        renderType: 'find'
+        renderType: 'find',
+        findOptions: {
+          successRedirect: '/home'
+        }
       },
       {
         elementType: 'routerLink',
