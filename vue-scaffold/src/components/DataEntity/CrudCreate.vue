@@ -40,10 +40,10 @@ async function submitHandler(e) {
     if (props.options.createOptions?.successRedirect) {
       router.push(props.options.createOptions.successRedirect);
     }
-  } catch (e) {
+  } catch (err) {
     // trigger error message display
-    if (e?.errors.length > 0) {
-      errorMessages.value = e.errors;
+    if (err?.errors.length > 0) {
+      errorMessages.value = err.errors;
     }
   }
 }

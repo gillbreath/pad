@@ -33,6 +33,28 @@ if (mainPad.dataEntities) {
 
           return validatePromise;
         },
+        read(searchCriteria) {
+          const findPromise = new Promise((resolve, reject) => {
+            if (searchCriteria.all) resolve(this.collection);
+            if (searchCriteria.index) resolve([this.collection[searchCriteria.index]]);
+
+            const foundRecords = this.collection.filter((eachRecord) => {
+              let searchSucceeded = true;
+              Object.keys(searchCriteria).forEach((eachCriteria) => {
+                if (eachRecord[eachCriteria] !== searchCriteria[eachCriteria])
+                  searchSucceeded = false;
+              });
+              return searchSucceeded ? eachRecord : '';
+            });
+
+            if (!foundRecords?.length) reject({ errors: [
+              { errorMessage: 'No records found.' }
+            ]});
+            resolve(foundRecords);
+          });
+
+          return findPromise;
+        },
         delete(index) {
           this.collection.splice(index, 1);
         },
