@@ -53,7 +53,7 @@ const pageRoutes = {
           },
           {
             elementType: 'routerLink',
-            routerLink: '/forgot-password',
+            to: '/forgot-password',
             innerHtml: 'Forgot password',
           },
           {
