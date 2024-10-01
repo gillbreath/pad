@@ -17,12 +17,13 @@ if (props.options.children) {
 }
 const myStore = useGlobalStores[props.options.dataEntityKey]();
 const dataEntityTemplate = mainPad.dataEntities[props.options.dataEntityKey].fields;
-const myRecord = {};
+const newRecord = {};
 const router = useRouter();
+
 let errorMessages = ref([]);
 
 Object.keys(dataEntityTemplate).forEach((e) => {
-  myRecord[e] = dataEntityTemplate[e].defaultValue;
+  newRecord[e] = dataEntityTemplate[e].defaultValue;
 });
 
 async function submitHandler(e) {
@@ -30,12 +31,12 @@ async function submitHandler(e) {
 
   Array.from(e.target.elements).forEach((eachField) => {
     if (eachField.id) {
-      myRecord[eachField.id] = eachField.value;
+      newRecord[eachField.id] = eachField.value;
     }
   });
 
   try {
-    await myStore.create(myRecord);
+    await myStore.create(newRecord);
     if (props.options.createOptions?.successRedirect) {
       router.push(props.options.createOptions.successRedirect);
     }
