@@ -37,7 +37,9 @@ async function submitHandler(e) {
 
     if (foundRecords) {
       if (props.options.findOptions?.successRedirect) {
-        router.push(props.options.findOptions.successRedirect);
+        router.push({
+          path: props.options.findOptions.successRedirect
+        });
       }
     }
   } catch (err) {

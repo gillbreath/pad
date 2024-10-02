@@ -3,22 +3,17 @@ import useGlobalStores from '@/stores/GlobalStores.js';
 import { useRoute } from 'vue-router';
 import constants from '../../constants.js';
 import CrudForm from './CrudForm.vue';
+import { useRouter } from 'vue-router';
 
-const route = useRoute();
+const router = useRouter();
 
 const props = defineProps({
-  dataEntityKey: String
+  options: Object
 });
-const myStore = useGlobalStores[props.dataEntityKey]();
 
-const myRecord = myStore.collection.find((e) => {
-  return e.slug === route.params.slug;
-});
+const myStore = useGlobalStores[props.options.dataEntityKey]();
 </script>
 
 <template>
-  <CrudForm :crud-record="myRecord"> </CrudForm>
-  <RouterLink :to="constants.dataEntityPath + props.dataEntityKey + '/' + myRecord.slug"
-    >Done</RouterLink
-  >
+  <CrudForm :options="props.options"> </CrudForm>
 </template>

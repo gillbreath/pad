@@ -1,43 +1,38 @@
 <script setup>
-// TODO: if any more components use this, switch to events
-/* eslint vue/no-mutating-props: 0 */
-defineProps({
-  crudRecord: Object,
-  fieldSchema: Object,
-  dataEntityTemplate: Object,
-  submitHandler: Function
+import useGlobalStores from '@/stores/GlobalStores.js';
+import mainPad from '../../../../main.pad.js';
+import FormRenderer from '@/components/PreFab/Forms/FormRenderer.vue';
+import LoopKey from '@/loopKey.js';
+import { ref } from 'vue';
+import CrudErrorMessages from './CrudErrorMessages.vue';
+
+const props = defineProps({
+  options: Object
 });
+if (props.options.children) {
+  props.options.children.forEach((e) => {
+    e.loopKey = LoopKey();
+  });
+}
+
+const myStore = useGlobalStores[props.options.dataEntityKey]();
+const dataEntityTemplate = mainPad.dataEntities[props.options.dataEntityKey].fields;
+
+let errorMessages = ref([]);
 </script>
 
 <template>
-  <!--    <label :for="eachField">{{ eachField }}:</label>&nbsp; -->
-  <template v-if="fieldSchema.elementType.substr(0, 4) === 'crud'">
-    <template v-if="fieldSchema.options?.type === 'input'">
-      <input
-        :id="fieldSchema.options.name"
-        :list="
-          dataEntityTemplate?.[fieldSchema.options.name]?.dataListSuggestions
-            ? fieldSchema.options.name + 'DataList'
-            : ''
-        "
-        :placeholder="dataEntityTemplate?.[fieldSchema.options.name]?.inputHint"
-        :type="dataEntityTemplate?.[fieldSchema.options.name]?.dataType || 'text'"
-        :value="crudRecord?.[fieldSchema.options.name]"
-      />
-      <datalist
-        v-if="dataEntityTemplate?.[fieldSchema.options.name]?.dataListSuggestions"
-        :id="fieldSchema.options.name + 'DataList'"
-      >
-        <template
-          v-for="eachOption in dataEntityTemplate?.[fieldSchema.options.name]?.dataListSuggestions"
-          :key="eachOption"
-        >
-          <option :value="eachOption" />
-        </template>
-      </datalist>
+  <form @submit.prevent="submitHandler">
+    <template v-if="errorMessages.length > 0">
+      <CrudErrorMessages :error-messages="errorMessages"> </CrudErrorMessages>
+      <br />
     </template>
-  </template>
-  <template v-if="fieldSchema.options?.type === 'submit'">
-    <button @click.prevent="submitHandler()">{{ fieldSchema.options?.buttonText }}</button>
-  </template>
+    <FormRenderer
+      v-for="eachFormField in props.options.children"
+      :key="eachFormField.loopKey"
+      :field-schema="eachFormField"
+      :data-entity-template="dataEntityTemplate"
+    >
+    </FormRenderer>
+  </form>
 </template>

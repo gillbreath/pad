@@ -88,8 +88,26 @@ const pageRoutes = {
       {
         elementType: 'dataEntity',
         dataEntityKey: 'logins',
-        fields: ['username'],
-        renderType: 'find'
+        children: [
+          {
+            elementType: 'formField',
+            options: {
+              type: 'input',
+              name: 'username'
+            }
+          },
+          {
+            elementType: 'formControl',
+            options: {
+              type: 'submit',
+              buttonText: 'EMAIL ME',
+            }
+          }
+        ],
+        renderType: 'find',
+        findOptions: {
+          successRedirect: '/reset-password'
+        }
       }
     ],
     layout: 'LoggedOutLayout'
@@ -104,11 +122,33 @@ const pageRoutes = {
       {
         elementType: 'dataEntity',
         dataEntityKey: 'logins',
-        fields: {
-          display: ['username'],
-          update: ['password', 'confirmPassword'],
-        },
-        renderType: 'update'
+        children: [
+          {
+            elementType: 'formField',
+            options: {
+              type: 'input',
+              name: 'password'
+            }
+          },
+          {
+            elementType: 'formField',
+            options: {
+              type: 'input',
+              name: 'confirmPassword'
+            }
+          },
+          {
+            elementType: 'formControl',
+            options: {
+              type: 'submit',
+              buttonText: 'RESET',
+            }
+          }
+        ],
+        renderType: 'update',
+        updateOptions: {
+          successRedirect: '/'
+        }
       }
     ],
     layout: 'LoggedOutLayout'
@@ -204,16 +244,12 @@ const padOptions = {
         options: {
           navLinks: [
             {
-              routerLink: '/about',
-              text: 'about'
+              routerLink: '/business',
+              text: 'business'
             },
             {
-              routerLink: '/blog',
-              text: 'blog'
-            },
-            {
-              routerLink: '/contact',
-              text: 'contact'
+              routerLink: '/',
+              text: 'logout'
             },
           ]
         }
