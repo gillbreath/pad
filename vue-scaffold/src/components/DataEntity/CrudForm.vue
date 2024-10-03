@@ -22,7 +22,7 @@ let errorMessages = ref([]);
 </script>
 
 <template>
-  <form @submit.prevent="submitHandler">
+  <form>
     <template v-if="errorMessages.length > 0">
       <CrudErrorMessages :error-messages="errorMessages"> </CrudErrorMessages>
       <br />
