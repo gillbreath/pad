@@ -38,7 +38,8 @@ if (mainPad.dataEntities) {
             if (searchCriteria.all) resolve(this.collection);
             if (searchCriteria.index) resolve([this.collection[searchCriteria.index]]);
 
-            const foundRecords = this.collection.filter((eachRecord) => {
+            // TODO: handle multiple records
+            const foundRecord = this.collection.find((eachRecord) => {
               let searchSucceeded = true;
               Object.keys(searchCriteria).forEach((eachCriteria) => {
                 if (eachRecord[eachCriteria] !== searchCriteria[eachCriteria])
@@ -47,8 +48,8 @@ if (mainPad.dataEntities) {
               return searchSucceeded ? eachRecord : '';
             });
 
-            if (!foundRecords?.length) reject({ errors: [{ errorMessage: 'No records found.' }] });
-            resolve(foundRecords);
+            if (!foundRecord) reject({ errors: [{ errorMessage: 'No record found.' }] });
+            resolve(foundRecord);
           });
 
           return findPromise;
