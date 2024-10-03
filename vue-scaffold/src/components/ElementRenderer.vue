@@ -34,6 +34,18 @@ if (props.elementsArray) {
       {{ eachEl.innerHtml }}
       <PadRenderer v-if="eachEl.children" :elements-array="eachEl.children" />
     </h2>
+    <h3 v-if="eachEl.elementType === 'h3'" :class="eachEl.class">
+      {{ eachEl.innerHtml }}
+      <PadRenderer v-if="eachEl.children" :elements-array="eachEl.children" />
+    </h3>
+    <h4 v-if="eachEl.elementType === 'h4'" :class="eachEl.class">
+      {{ eachEl.innerHtml }}
+      <PadRenderer v-if="eachEl.children" :elements-array="eachEl.children" />
+    </h4>
+    <h5 v-if="eachEl.elementType === 'h5'" :class="eachEl.class">
+      {{ eachEl.innerHtml }}
+      <PadRenderer v-if="eachEl.children" :elements-array="eachEl.children" />
+    </h5>
     <img
       v-if="eachEl.elementType === 'img'"
       :alt="eachEl.alt"
