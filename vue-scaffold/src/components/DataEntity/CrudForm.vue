@@ -15,7 +15,6 @@ if (props.options.children) {
   });
 }
 
-const myStore = useGlobalStores[props.options.dataEntityKey]();
 const dataEntityTemplate = mainPad.dataEntities[props.options.dataEntityKey].fields;
 
 let errorMessages = ref([]);
