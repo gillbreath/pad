@@ -1,5 +1,6 @@
 // Framework CSS - CRUD controls etc
 import './assets/pad.css';
+import './assets/responsive.css';
 // Symlink to app css for convenience
 // import './assets/nonrepo/main.css';
 
