@@ -62,11 +62,11 @@ if (props.elementsArray) {
     <nav v-if="eachEl.elementType === 'nav'">
       <PadRenderer v-if="eachEl.children" :elements-array="eachEl.children" />
     </nav>
-    <p v-if="eachEl.elementType === 'p'">
+    <p v-if="eachEl.elementType === 'p'" :class="eachEl.class">
       {{ eachEl.innerHtml }}
       <PadRenderer v-if="eachEl.children" :elements-array="eachEl.children" />
     </p>
-    <RouterLink v-if="eachEl.elementType === 'routerLink'" :to="eachEl.to">
+    <RouterLink v-if="eachEl.elementType === 'routerLink'" :to="eachEl.to" :class="eachEl.class">
       {{ eachEl.innerHtml }}
       <PadRenderer v-if="eachEl.children" :elements-array="eachEl.children" />
     </RouterLink>
