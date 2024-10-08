@@ -10,7 +10,7 @@ const myModel = defineModel();
   <input
     :id="fieldName"
     :list="dataEntityTemplate?.[fieldName]?.dataListSuggestions ? fieldName + 'DataList' : ''"
-    :placeholder="dataEntityTemplate?.[fieldName]?.inputHint"
+    :placeholder="dataEntityTemplate?.[fieldName]?.inputHint || fieldName"
     :type="dataEntityTemplate?.[fieldName]?.dataType || 'text'"
     v-model="myModel"
   />
