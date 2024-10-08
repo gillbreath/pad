@@ -11,7 +11,10 @@ function updateDynamicLayout(layoutName) {
 </script>
 
 <template>
-  <header v-if="mainPad?.padOptions?.layouts[dynamicLayout]?.header">
+  <header
+    v-if="mainPad?.padOptions?.layouts[dynamicLayout]?.header"
+    :class="mainPad?.padOptions?.layouts[dynamicLayout]?.headerClass"
+  >
     <PadRenderer :elements-array="mainPad?.padOptions?.layouts[dynamicLayout].header" />
   </header>
   <main>
@@ -19,9 +22,10 @@ function updateDynamicLayout(layoutName) {
       <router-view @update-dynamic-layout="updateDynamicLayout" />
     </template>
     <template v-else>
-      <div class="content-container">
-        <router-view @update-dynamic-layout="updateDynamicLayout" />
-      </div>
+      <router-view @update-dynamic-layout="updateDynamicLayout" />
     </template>
   </main>
+  <footer v-if="mainPad?.padOptions?.layouts[dynamicLayout]?.footer">
+    <PadRenderer :elements-array="mainPad?.padOptions?.layouts[dynamicLayout].footer" />
+  </footer>
 </template>
