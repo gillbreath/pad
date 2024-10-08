@@ -18,36 +18,31 @@ const logoTextOptions = props.options.siteNameImageSrc
     };
 const headerPad = [
   {
-    elementType: 'header',
+    elementType: 'div',
+    class: 'pre-fab-header',
     children: [
       {
-        elementType: 'div',
-        class: 'content-container',
+        elementType: 'a',
+        class: 'home-links',
+        href: '/',
         children: [
           {
-            elementType: 'a',
-            class: 'home-links',
-            href: '/',
-            children: [
-              {
-                elementType: 'img',
-                class: 'logo picture',
-                alt: props.options.logoPictureAltText || props.options.siteName + ' logo picture',
-                src: props.options.siteLogoImageSrc || '/src/assets/Gillbreath-Pad-Mascot.jpg'
-              },
-              logoTextOptions
-            ]
+            elementType: 'img',
+            class: 'logo picture',
+            alt: props.options.logoPictureAltText || props.options.siteName + ' logo picture',
+            src: props.options.siteLogoImageSrc || '/src/assets/Gillbreath-Pad-Mascot.jpg'
           },
+          logoTextOptions
+        ]
+      },
+      {
+        elementType: 'nav',
+        children: [
           {
-            elementType: 'nav',
-            children: [
-              {
-                elementType: 'preFabLinkList',
-                options: {
-                  collection: props.options.navLinks
-                }
-              }
-            ]
+            elementType: 'preFabLinkList',
+            options: {
+              collection: props.options.navLinks
+            }
           }
         ]
       }
@@ -59,3 +54,10 @@ const headerPad = [
 <template>
   <PadRenderer :elements-array="headerPad" />
 </template>
+
+<style>
+.pre-fab-header {
+  display: flex;
+  justify-content: space-between;
+}
+</style>
