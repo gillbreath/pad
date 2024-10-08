@@ -5,7 +5,11 @@ const props = defineProps({
 </script>
 
 <template>
-  <div v-for="eachErrorMessage in props.errorMessages" :key="eachErrorMessage">
+  <div
+    class="error-message"
+    v-for="eachErrorMessage in props.errorMessages"
+    :key="eachErrorMessage"
+  >
     {{ eachErrorMessage?.errorMessage }}
   </div>
 </template>
