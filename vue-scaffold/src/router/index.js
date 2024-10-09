@@ -37,7 +37,7 @@ if (mainPad.dataEntities) {
     component: DataEntityList
   });
   Object.entries(mainPad.dataEntities).forEach((dataEntity) => {
-    const [dataEntityKey] = dataEntity;
+    const [dataEntityKey, dataEntityValue] = dataEntity;
     routes.push({
       path: constants.dataEntityPath + dataEntityKey,
       component: CrudDataRenderer,
@@ -63,7 +63,33 @@ if (mainPad.dataEntities) {
       path: constants.dataEntityPath + dataEntityKey + '/create',
       component: CrudCreate,
       props: {
-        dataEntityKey
+        options: { dataEntityKey,
+          createOptions: {
+            successRedirect: '/home'
+          },
+          children: [{
+            elementType: 'h3',
+            innerHtml: 'New ' + dataEntityKey
+          }].concat(
+            Object.keys(dataEntityValue.fields).map(eachField => {
+              return {
+                elementType: 'formField',
+                options: {
+                  type: 'input',
+                  name: eachField
+                }
+              };
+            }).concat([
+              {
+                elementType: 'formControl',
+                options: {
+                  type: 'submit',
+                  buttonText: 'SUBMIT',
+                }
+              }
+            ])
+          )
+        }
       }
     });
   });
