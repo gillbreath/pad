@@ -61,7 +61,7 @@ if (mainPad.dataEntities) {
           let failedValidationMessages = [];
 
           Object.keys(record).forEach((eachField) => {
-            dataEntityValue.fields[eachField].validations.forEach((eachValidation) => {
+            dataEntityValue.fields[eachField]?.validations?.forEach((eachValidation) => {
               const eachFailedValidationMessage = validationRecipes[eachValidation](
                 eachField,
                 record[eachField]
