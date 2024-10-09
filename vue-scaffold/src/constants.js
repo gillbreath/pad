@@ -1,5 +1,5 @@
 const adminPath = '/admin/';
-const dataEntityPath = adminPath + 'data-entities/';
+const dataEntityPath = '/';
 
 export default {
   adminPath,
