@@ -74,7 +74,7 @@ if (mainPad.dataEntities) {
           },
           children: [
             {
-              elementType: 'h3',
+              elementType: 'h2',
               innerHtml: 'New ' + dataEntityKey
             }
           ].concat(
