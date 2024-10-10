@@ -13,7 +13,7 @@ Portable Application Definition (PAD) is a proposal for a convention-driven appr
 - Dynamically produce app behavior from PAD
 
 ## Get Involved
-Fill out this [short form](https://forms.gle/xRJGopE8coVYDV4i6) and we'll be in touch!
+Contribute to the framework by joining our social impact project. Fill out this [short form](https://forms.gle/xRJGopE8coVYDV4i6) and we'll be in touch.
 
 ## Quick Start/Install
 - `git clone` repo locally
