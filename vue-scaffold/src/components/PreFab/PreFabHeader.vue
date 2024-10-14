@@ -1,20 +1,24 @@
 <script setup>
 import PadRenderer from '../PadRenderer.vue';
+import mainPad from '../../../../main.pad.js';
 
 const props = defineProps({
   options: Object
 });
+
+const siteName = props.options.siteName || mainPad.padOptions.appName;
+
 const logoTextOptions = props.options.siteNameImageSrc
   ? {
       elementType: 'img',
       class: 'logo text',
-      alt: props.options.siteName + ' logo',
+      alt: siteName + ' logo',
       src: props.options.siteNameImageSrc
     }
   : {
       elementType: 'span',
       class: 'logo text',
-      innerHtml: props.options.siteName || 'PAD Header'
+      innerHtml: siteName || 'PAD Header'
     };
 const headerPad = [
   {
@@ -29,7 +33,7 @@ const headerPad = [
           {
             elementType: 'img',
             class: 'logo picture',
-            alt: props.options.logoPictureAltText || props.options.siteName + ' logo picture',
+            alt: props.options.logoPictureAltText || siteName + ' logo picture',
             src: props.options.siteLogoImageSrc || '/src/assets/Gillbreath-Pad-Mascot.jpg'
           },
           logoTextOptions
