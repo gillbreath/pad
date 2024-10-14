@@ -1,7 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import PadRenderer from '../components/PadRenderer.vue';
-import DataEntityList from '../components/DataEntity/DataEntityList.vue';
-import DataRenderer from '../components/DataEntity/DataRenderer.vue';
 import CrudRead from '../components/DataEntity/CrudRead.vue';
 import CrudUpdate from '../components/DataEntity/CrudUpdate.vue';
 import CrudCreate from '../components/DataEntity/CrudCreate.vue';
@@ -32,23 +30,18 @@ if (mainPad.dataEntities) {
     path: constants.adminPath,
     component: adminHome
   });
-  routes.push({
-    path: constants.dataEntityPath,
-    component: DataEntityList
-  });
-  // TODO: DataRenderer causes Vue warning bc it d/n handle updateDynamicLayout
-  // Switch to PadRenderer or declare emit in DR?
+
   Object.entries(mainPad.dataEntities).forEach((dataEntity) => {
     const [dataEntityKey, dataEntityValue] = dataEntity;
     routes.push({
       path: constants.dataEntityPath + dataEntityKey,
-      component: DataRenderer,
+      component: PadRenderer,
       props: {
-        options: {
+        elementsArray: [{
           dataEntityKey,
           elementType: 'dataEntity',
           renderType: 'table'
-        }
+        }]
       }
     });
     routes.push({
