@@ -17,9 +17,7 @@ function updateDynamicLayout(layoutName) {
   >
     <PadRenderer :elements-array="mainPad?.padOptions?.layouts[dynamicLayout].header" />
   </header>
-  <main
-    :class="mainPad?.padOptions?.layouts[dynamicLayout]?.layoutClass"
-  >
+  <main :class="mainPad?.padOptions?.layouts[dynamicLayout]?.layoutClass">
     <template v-if="mainPad?.padOptions?.layouts[dynamicLayout]?.main?.overrideContainer">
       <router-view @update-dynamic-layout="updateDynamicLayout" />
     </template>

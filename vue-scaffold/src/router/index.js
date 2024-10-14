@@ -43,11 +43,13 @@ if (mainPad.dataEntities) {
     routes.push({
       path: constants.dataEntityPath + dataEntityKey,
       component: DataRenderer,
-      props: { options: {
-        dataEntityKey,
-        elementType: 'dataEntity',
-        renderType: 'table'
-      }}
+      props: {
+        options: {
+          dataEntityKey,
+          elementType: 'dataEntity',
+          renderType: 'table'
+        }
+      }
     });
     routes.push({
       path: constants.dataEntityPath + dataEntityKey + '/:slug',
