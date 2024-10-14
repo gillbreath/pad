@@ -6,7 +6,7 @@ import PadRenderer from '@/components/PadRenderer.vue';
 let dynamicLayout = ref('DefaultLayout');
 
 function updateDynamicLayout(layoutName) {
-  dynamicLayout.value = layoutName;
+  dynamicLayout.value = layoutName || dynamicLayout.value;
 }
 </script>
 
