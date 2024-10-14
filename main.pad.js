@@ -1,4 +1,4 @@
-import seedPad from './pad/blog.example.pad.js';
+import seedPad from './pad/examples/02-blog.example.pad.js';
 import ElementRendererTests from './pad/ElementRenderer.tests.pad.js';
 
 // testing
