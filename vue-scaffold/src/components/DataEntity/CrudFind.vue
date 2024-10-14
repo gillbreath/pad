@@ -33,13 +33,13 @@ async function submitHandler(e) {
   });
 
   try {
-    const foundRecords = await myStore.read(searchCriteria);
+    // TODO: handle multiple records
+    const foundRecord = await myStore.read(searchCriteria);
 
-    if (foundRecords) {
+    if (foundRecord) {
       if (props.options.findOptions?.successRedirect) {
         router.push({
-          path: props.options.findOptions.successRedirect,
-          state: { foundRecords }
+          path: props.options.findOptions.successRedirect
         });
       }
     }
