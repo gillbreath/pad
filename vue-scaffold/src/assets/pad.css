@@ -4,7 +4,6 @@
   margin: 0 auto;
   min-height: 100vh;
   min-width: 400px;
-  width: 70%;
 }
 
 a.button {
@@ -27,7 +26,7 @@ header .home-links {
 footer,
 header,
 main {
-  max-width: 800px;
+  max-width: 1000px;
   min-width: 320px;
 }
 footer p {
@@ -163,6 +162,9 @@ ul.breadcrumbs li::last-child {
 .picture {
   height: 50px;
   width: 50px;
+}
+.pre-fab-header {
+  width: 80%;
 }
 .tagline {
   text-align: center;
