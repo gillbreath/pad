@@ -76,7 +76,7 @@ export default {
         path: constants.dataEntityPath + dataEntityKey + '/:slug',
         component: CrudRead,
         props: {
-          dataEntityKey
+          options: { crudMode: true, dataEntityKey }
         }
       };
     },

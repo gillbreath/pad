@@ -7,9 +7,9 @@ import constants from '../../constants.js';
 const route = useRoute();
 
 const props = defineProps({
-  dataEntityKey: String
+  options: String
 });
-const myStore = useGlobalStores[props.dataEntityKey]();
+const myStore = useGlobalStores[props.options.dataEntityKey]();
 
 const myRecord = myStore.collection.find((e) => {
   return e.slug === route.params.slug;
@@ -19,17 +19,20 @@ const myRecord = myStore.collection.find((e) => {
 <template>
   <BreadCrumbs />
   <form>
+    <RouterLink
+  v-if="props.options.crudMode === true"
+      :to="constants.dataEntityPath + props.options.dataEntityKey + '/' + myRecord.slug + '/update'"
+      >Update</RouterLink
+    >
     <template
       v-for="eachField in Object.keys(myRecord).filter((e) => e !== 'loopKey')"
       :key="eachField"
     >
-      <label :for="eachField">{{ eachField }}:</label>&nbsp;
-      <div :id="eachField">{{ myRecord[eachField] }}</div>
+      <div :id="eachField">
+        <label :for="eachField">{{ eachField }}:</label>&nbsp;
+{{ myRecord[eachField] }}
+      </div>
       <br />
     </template>
-    <RouterLink
-      :to="constants.dataEntityPath + props.dataEntityKey + '/' + myRecord.slug + '/update'"
-      >Update</RouterLink
-    >
   </form>
 </template>
