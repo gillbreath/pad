@@ -4,7 +4,6 @@ import CrudRead from '../components/DataEntity/CrudRead.vue';
 import CrudUpdate from '../components/DataEntity/CrudUpdate.vue';
 import CrudCreate from '../components/DataEntity/CrudCreate.vue';
 import mainPad from '../../../main.pad.js';
-import adminHome from '../components/adminHome.vue';
 import constants from '../constants.js';
 
 const routes = [];
@@ -26,10 +25,6 @@ if (mainPad.pageRoutes) {
 
 // CRUD routes for each dataEntity
 if (mainPad.dataEntities) {
-  routes.push({
-    path: constants.adminPath,
-    component: adminHome
-  });
 
   Object.entries(mainPad.dataEntities).forEach((dataEntity) => {
     const [dataEntityKey, dataEntityValue] = dataEntity;
