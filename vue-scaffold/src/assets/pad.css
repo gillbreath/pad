@@ -3,15 +3,85 @@
   grid-template-rows: auto 1fr auto;
   margin: 0 auto;
   min-height: 100vh;
-  width: 80%;
+  min-width: 400px;
+  width: 70%;
 }
+
+a.button {
+  text-align: center;
+  text-decoration: none;
+}
+
 body {
+  font-family: Geneva, Helvetica, Arial, sans-serif;
+  font-size: 1.025em;
   margin: 0;
 }
+
+footer, header .home-links {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+footer, header, main {
+  max-width: 800px;
+  min-width: 320px;
+}
+footer p {
+  font-size: .5em;
+}
+footer p, header p {
+    width: 80%;
+    text-align: center;
+}
+
 form {
   display: flex;
   flex-direction: column;
   width: 75%;
+}
+form, footer, header, main {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 1em;
+  width: 80%;
+}
+form button, .button {
+  background-color: darkgrey;
+  border: none;
+  border-radius: .25em;
+  color: white;
+  width: 50%;
+}
+form *, .button {
+  margin: 1em 0;
+  padding: 1em 0;
+}
+
+h1 {
+  font-family: "Georgia";
+  font-size: 4em;
+  margin: 1em 0 0 0;
+}
+h2 {
+  font-size: 1em;
+}
+
+header {
+  background-color: darkgray;
+}
+header.logged-in, header.logged-in a {
+  background-color: black;
+  color: white;
+}
+header a {
+  color: white;
+  text-decoration: none;
+}
+header p, main h3, main a {
+  font-size: .75em;
 }
 header .home-links {
   display: flex;
@@ -31,14 +101,24 @@ header .content-container {
   max-width: 700px;
   padding: 1em 0;
 }
+
+input {
+    width: 100%;
+}
+
+main {
+  background-color: lightgray;
+}
+
 nav {
   flex-direction: column;
   text-align: right;
   width: 6em;
 }
-main .content-container {
-  max-width: 600px;
+nav ul {
+  list-style-type: none;
 }
+
 ul.breadcrumbs {
   display: flex;
   list-style: none;
@@ -53,13 +133,9 @@ ul.breadcrumbs li::after {
 ul.breadcrumbs li::last-child {
   content: '';
 }
-.logo.text {
-  height: 60px;
-  width: 180px;
-}
-.picture {
-  height: 100px;
-  width: 100px;
+
+.error-message {
+  color: red;
 }
 .home-links .picture {
   border-radius: 5em;
@@ -67,4 +143,16 @@ ul.breadcrumbs li::last-child {
 }
 .home-links {
   min-height: 100px;
+}
+.logo.text {
+  height: 60px;
+  width: 180px;
+}
+.picture {
+  height: 50px;
+  width: 50px;
+}
+.tagline {
+  text-align: center;
+  width: 80%;
 }
