@@ -5,42 +5,25 @@ import CrudUpdate from '../components/DataEntity/CrudUpdate.vue';
 import CrudCreate from '../components/DataEntity/CrudCreate.vue';
 import mainPad from '../../../main.pad.js';
 import constants from '../constants.js';
+import routeConstructors from './routeConstructors.js';
 
 const routes = [];
 
 // pageRoutes
 if (mainPad.pageRoutes) {
-  Object.entries(mainPad.pageRoutes).forEach((pageRoute) => {
-    const [pageRouteKey, pageRouteValue] = pageRoute;
-    routes.push({
-      path: pageRouteValue.path || '/' + pageRouteKey,
-      component: PadRenderer,
-      props: {
-        elementsArray: pageRouteValue.children,
-        layout: pageRouteValue.layout || 'DefaultLayout'
-      }
-    });
+  Object.entries(mainPad.pageRoutes).forEach((eachRoute) => {
+    routes.push(routeConstructors.pageRoutes(eachRoute));
   });
 }
 
 // CRUD routes for each dataEntity
 if (mainPad.dataEntities) {
-
   Object.entries(mainPad.dataEntities).forEach((dataEntity) => {
     const [dataEntityKey, dataEntityValue] = dataEntity;
-    routes.push({
-      path: constants.dataEntityPath + dataEntityKey,
-      component: PadRenderer,
-      props: {
-        elementsArray: [
-          {
-            dataEntityKey,
-            elementType: 'dataEntity',
-            renderType: 'table'
-          }
-        ]
-      }
-    });
+    const dataEntitySingularName = dataEntityValue.singularName || dataEntityKey.substr(0, dataEntityKey.length - 1);
+
+    routes.push(routeConstructors.dataEntities.list(dataEntityKey));
+
     routes.push({
       path: constants.dataEntityPath + dataEntityKey + '/:slug',
       component: CrudRead,
@@ -48,6 +31,7 @@ if (mainPad.dataEntities) {
         dataEntityKey
       }
     });
+
     routes.push({
       path: constants.dataEntityPath + dataEntityKey + '/:slug/update',
       component: CrudUpdate,
@@ -56,46 +40,7 @@ if (mainPad.dataEntities) {
       }
     });
 
-    const dataEntitySingularName = dataEntityValue.singularName || dataEntityKey.substr(0, dataEntityKey.length - 1);
-
-    routes.push({
-      path: constants.dataEntityPath + dataEntityKey + '/create',
-      component: CrudCreate,
-      props: {
-        options: {
-          dataEntityKey,
-          createOptions: {
-            successRedirect: constants.dataEntityPath + dataEntityKey
-          },
-          children: [
-            {
-              elementType: 'h2',
-              innerHtml: 'New ' + dataEntitySingularName
-            }
-          ].concat(
-            Object.keys(dataEntityValue.fields)
-              .map((eachField) => {
-                return {
-                  elementType: 'formField',
-                  options: {
-                    type: 'input',
-                    name: eachField
-                  }
-                };
-              })
-              .concat([
-                {
-                  elementType: 'formControl',
-                  options: {
-                    type: 'submit',
-                    buttonText: 'SUBMIT'
-                  }
-                }
-              ])
-          )
-        }
-      }
-    });
+    routes.push(routeConstructors.dataEntities.create(dataEntityKey, dataEntityValue, dataEntitySingularName));
   });
 }
 
