@@ -10,7 +10,7 @@ import CrudErrorMessages from './CrudErrorMessages.vue';
 const props = defineProps({
   options: Object
 });
-if (props.options.children) {
+if (props.options?.children) {
   props.options.children.forEach((e) => {
     e.loopKey = LoopKey();
   });
