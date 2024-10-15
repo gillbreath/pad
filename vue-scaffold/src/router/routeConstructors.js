@@ -1,6 +1,8 @@
 import PadRenderer from '../components/PadRenderer.vue';
 import constants from '../constants.js';
 import CrudCreate from '../components/DataEntity/CrudCreate.vue';
+import CrudRead from '../components/DataEntity/CrudRead.vue';
+import CrudUpdate from '../components/DataEntity/CrudUpdate.vue';
 
 export default {
   dataEntities: {
@@ -50,19 +52,43 @@ export default {
         component: PadRenderer,
         props: {
           elementsArray: [
-              {
-                elementType: 'h1',
-                innerHtml: dataEntityKey
-              },
+            {
+              elementType: 'h1',
+              innerHtml: dataEntityKey
+            },
+            {
+              elementType: 'routerLink',
+              to: dataEntityKey + '/create',
+              innerHtml: 'create new'
+            },
             {
               dataEntityKey,
+              crudMode: true,
               elementType: 'dataEntity',
-              renderType: 'table'
+              renderType: 'table',
             }
           ]
         }
       };
     },
+    read: (dataEntityKey) => {
+      return {
+        path: constants.dataEntityPath + dataEntityKey + '/:slug',
+        component: CrudRead,
+        props: {
+          dataEntityKey
+        }
+      };
+    },
+    update: (dataEntityKey) => {
+      return {
+        path: constants.dataEntityPath + dataEntityKey + '/:slug/update',
+        component: CrudUpdate,
+        props: {
+          options: { dataEntityKey }
+        }
+      };
+    }
   },
   pageRoutes: (pageRoute) => {
     const [pageRouteKey, pageRouteValue] = pageRoute;
