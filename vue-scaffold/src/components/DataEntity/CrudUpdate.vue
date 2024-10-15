@@ -27,7 +27,6 @@ function submitHandler(e) {
 </script>
 
 <template>
-  <!-- <CrudForm :options="props.options" @submit.prevent="submitHandler"> </CrudForm> -->
   <form @submit.prevent="submitHandler">
     <template v-if="errorMessages.length > 0">
       <CrudErrorMessages :error-messages="errorMessages"> </CrudErrorMessages>
