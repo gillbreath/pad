@@ -60,6 +60,9 @@ if (mainPad.dataEntities) {
         dataEntityKey
       }
     });
+
+    const dataEntitySingularName = dataEntityValue.singularName || dataEntityKey.substr(0, dataEntityKey.length - 1);
+
     routes.push({
       path: constants.dataEntityPath + dataEntityKey + '/create',
       component: CrudCreate,
@@ -72,7 +75,7 @@ if (mainPad.dataEntities) {
           children: [
             {
               elementType: 'h2',
-              innerHtml: 'New ' + dataEntityKey
+              innerHtml: 'New ' + dataEntitySingularName
             }
           ].concat(
             Object.keys(dataEntityValue.fields)

@@ -1,5 +1,6 @@
 const dataEntities = {
   logins: {
+    singularName: 'login',
     fields: {
       username: {
         dataType: 'email',
@@ -25,6 +26,7 @@ const dataEntities = {
     }
   },
   people: {
+    singularName: 'person',
     fields: {
       firstName: {
         validations: [
