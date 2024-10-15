@@ -37,11 +37,13 @@ if (mainPad.dataEntities) {
       path: constants.dataEntityPath + dataEntityKey,
       component: PadRenderer,
       props: {
-        elementsArray: [{
-          dataEntityKey,
-          elementType: 'dataEntity',
-          renderType: 'table'
-        }]
+        elementsArray: [
+          {
+            dataEntityKey,
+            elementType: 'dataEntity',
+            renderType: 'table'
+          }
+        ]
       }
     });
     routes.push({

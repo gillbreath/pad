@@ -18,21 +18,25 @@ body {
   margin: 0;
 }
 
-footer, header .home-links {
+footer,
+header .home-links {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
-footer, header, main {
+footer,
+header,
+main {
   max-width: 800px;
   min-width: 320px;
 }
 footer p {
-  font-size: .5em;
+  font-size: 0.5em;
 }
-footer p, header p {
-    width: 80%;
-    text-align: center;
+footer p,
+header p {
+  width: 80%;
+  text-align: center;
 }
 
 form {
@@ -40,7 +44,10 @@ form {
   flex-direction: column;
   width: 75%;
 }
-form, footer, header, main {
+form,
+footer,
+header,
+main {
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -48,20 +55,22 @@ form, footer, header, main {
   padding: 1em;
   width: 80%;
 }
-form button, .button {
+form button,
+.button {
   background-color: darkgrey;
   border: none;
-  border-radius: .25em;
+  border-radius: 0.25em;
   color: white;
   width: 50%;
 }
-form *, .button {
+form *,
+.button {
   margin: 1em 0;
   padding: 1em 0;
 }
 
 h1 {
-  font-family: "Georgia";
+  font-family: 'Georgia';
   font-size: 4em;
   margin: 1em 0 0 0;
 }
@@ -72,7 +81,8 @@ h2 {
 header {
   background-color: darkgray;
 }
-header.logged-in, header.logged-in a {
+header.logged-in,
+header.logged-in a {
   background-color: black;
   color: white;
 }
@@ -80,8 +90,10 @@ header a {
   color: white;
   text-decoration: none;
 }
-header p, main h3, main a {
-  font-size: .75em;
+header p,
+main h3,
+main a {
+  font-size: 0.75em;
 }
 header .home-links {
   display: flex;
@@ -103,7 +115,7 @@ header .content-container {
 }
 
 input {
-    width: 100%;
+  width: 100%;
 }
 
 main {
