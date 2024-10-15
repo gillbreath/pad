@@ -65,7 +65,7 @@ export default {
               dataEntityKey,
               crudMode: true,
               elementType: 'dataEntity',
-              renderType: 'table',
+              renderType: 'table'
             }
           ]
         }

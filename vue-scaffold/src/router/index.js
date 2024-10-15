@@ -1,7 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import PadRenderer from '../components/PadRenderer.vue';
 import mainPad from '../../../main.pad.js';
-import constants from '../constants.js';
 import routeConstructors from './routeConstructors.js';
 
 const routes = [];
@@ -17,9 +15,12 @@ if (mainPad.pageRoutes) {
 if (mainPad.dataEntities) {
   Object.entries(mainPad.dataEntities).forEach((dataEntity) => {
     const [dataEntityKey, dataEntityValue] = dataEntity;
-    const dataEntitySingularName = dataEntityValue.singularName || dataEntityKey.substr(0, dataEntityKey.length - 1);
+    const dataEntitySingularName =
+      dataEntityValue.singularName || dataEntityKey.substr(0, dataEntityKey.length - 1);
 
-    routes.push(routeConstructors.dataEntities.create(dataEntityKey, dataEntityValue, dataEntitySingularName));
+    routes.push(
+      routeConstructors.dataEntities.create(dataEntityKey, dataEntityValue, dataEntitySingularName)
+    );
     routes.push(routeConstructors.dataEntities.list(dataEntityKey));
     routes.push(routeConstructors.dataEntities.read(dataEntityKey));
     routes.push(routeConstructors.dataEntities.update(dataEntityKey));

@@ -20,7 +20,7 @@ const myRecord = myStore.collection.find((e) => {
   <BreadCrumbs />
   <form>
     <RouterLink
-  v-if="props.options.crudMode === true"
+      v-if="props.options.crudMode === true"
       :to="constants.dataEntityPath + props.options.dataEntityKey + '/' + myRecord.slug + '/update'"
       >Update</RouterLink
     >
@@ -30,7 +30,7 @@ const myRecord = myStore.collection.find((e) => {
     >
       <div :id="eachField">
         <label :for="eachField">{{ eachField }}:</label>&nbsp;
-{{ myRecord[eachField] }}
+        {{ myRecord[eachField] }}
       </div>
       <br />
     </template>
