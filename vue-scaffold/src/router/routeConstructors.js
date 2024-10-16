@@ -58,7 +58,7 @@ export default {
             },
             {
               elementType: 'routerLink',
-              to: dataEntityKey + '/create',
+              to: '/' + dataEntityKey + '/create',
               innerHtml: 'create new'
             },
             {
