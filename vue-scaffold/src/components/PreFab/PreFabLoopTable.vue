@@ -49,7 +49,11 @@ if (props.collection) {
         <br />
         <RouterLink
           :to="
-            constants.dataEntityPath + props.options.dataEntityKey + '/' + eachItem.primarykey + '/update'
+            constants.dataEntityPath +
+            props.options.dataEntityKey +
+            '/' +
+            eachItem.primarykey +
+            '/update'
           "
           >update</RouterLink
         >

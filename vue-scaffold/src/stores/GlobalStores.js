@@ -57,7 +57,9 @@ if (mainPad.dataEntities) {
         },
         update(updateRecord) {
           const updatePromise = new Promise((resolve, reject) => {
-            const updateIndex = this.collection.findIndex(e => e.primarykey === updateRecord.primarykey);
+            const updateIndex = this.collection.findIndex(
+              (e) => e.primarykey === updateRecord.primarykey
+            );
 
             if (updateIndex < 0) reject('primarykey not found');
 
