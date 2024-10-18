@@ -1,9 +1,11 @@
 <script setup>
-defineProps({
+const props = defineProps({
   fieldName: String,
+  inputValue: String,
   dataEntityTemplate: Object
 });
 const myModel = defineModel();
+myModel.value = props.inputValue;
 </script>
 
 <template>

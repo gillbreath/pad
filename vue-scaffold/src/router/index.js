@@ -23,7 +23,9 @@ if (mainPad.dataEntities) {
     );
     routes.push(routeConstructors.dataEntities.list(dataEntityKey));
     routes.push(routeConstructors.dataEntities.read(dataEntityKey));
-    routes.push(routeConstructors.dataEntities.update(dataEntityKey));
+    routes.push(
+      routeConstructors.dataEntities.update(dataEntityKey, dataEntityValue, dataEntitySingularName)
+    );
   });
 }
 

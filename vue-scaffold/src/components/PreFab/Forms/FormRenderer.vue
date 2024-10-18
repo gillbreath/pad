@@ -1,7 +1,7 @@
 <script setup>
 import PadRenderer from '@/components/PadRenderer.vue';
 import InputField from './InputField.vue';
-defineProps({
+const props = defineProps({
   fieldSchema: Object,
   dataEntityTemplate: Object
 });
@@ -12,6 +12,7 @@ defineProps({
     <InputField
       v-if="fieldSchema.options.type === 'input'"
       :field-name="fieldSchema.options.name"
+      :input-value="fieldSchema.options.inputValue"
       :data-entity-template="dataEntityTemplate"
     />
     <button v-if="fieldSchema.options.type === 'submit'">

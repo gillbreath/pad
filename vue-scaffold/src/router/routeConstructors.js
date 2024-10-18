@@ -4,6 +4,17 @@ import CrudCreate from '../components/DataEntity/CrudCreate.vue';
 import CrudRead from '../components/DataEntity/CrudRead.vue';
 import CrudUpdate from '../components/DataEntity/CrudUpdate.vue';
 
+function mapDataEntityToFormFields(dataEntityFields) {
+  return Object.keys(dataEntityFields).map((eachField) => {
+    return {
+      elementType: 'formField',
+      options: {
+        type: 'input',
+        name: eachField
+      }
+    };
+  });
+}
 export default {
   dataEntities: {
     create: (dataEntityKey, dataEntityValue, dataEntitySingularName) => {
@@ -80,12 +91,30 @@ export default {
         }
       };
     },
-    update: (dataEntityKey) => {
+    update: (dataEntityKey, dataEntityValue, dataEntitySingularName) => {
       return {
-        path: constants.dataEntityPath + dataEntityKey + '/:slug/update',
+        path: constants.dataEntityPath + dataEntityKey + '/:primarykey/update',
         component: CrudUpdate,
         props: {
-          options: { dataEntityKey }
+          options: {
+            dataEntityKey,
+            children: [
+              {
+                elementType: 'h1',
+                innerHtml: 'Update ' + dataEntitySingularName
+              }
+            ]
+              .concat(mapDataEntityToFormFields(dataEntityValue.fields))
+              .concat([
+                {
+                  elementType: 'formControl',
+                  options: {
+                    type: 'submit',
+                    buttonText: 'SUBMIT'
+                  }
+                }
+              ])
+          }
         }
       };
     }
