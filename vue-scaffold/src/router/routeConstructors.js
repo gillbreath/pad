@@ -15,6 +15,7 @@ function mapDataEntityToFormFields(dataEntityFields) {
     };
   });
 }
+
 export default {
   dataEntities: {
     create: (dataEntityKey, dataEntityValue, dataEntitySingularName) => {
@@ -98,6 +99,9 @@ export default {
         props: {
           options: {
             dataEntityKey,
+            updateOptions: {
+              successRedirect: constants.dataEntityPath + dataEntityKey
+            },
             children: [
               {
                 elementType: 'h1',

@@ -4,7 +4,7 @@ import mainPad from '../../../../main.pad.js';
 import FormRenderer from '@/components/PreFab/Forms/FormRenderer.vue';
 import LoopKey from '@/loopKey.js';
 import { ref } from 'vue';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import CrudErrorMessages from './CrudErrorMessages.vue';
 
 const props = defineProps({
@@ -19,6 +19,7 @@ if (props.options?.children) {
 const dataEntityTemplate = mainPad.dataEntities[props.options.dataEntityKey].fields;
 const myStore = useGlobalStores[props.options.dataEntityKey]();
 const route = useRoute();
+const router = useRouter();
 
 let errorMessages = ref([]);
 const searchCriteria = {
@@ -31,6 +32,7 @@ let copyProps = ref([]);
 async function getUpdateRecord(searchCriteria) {
   const foundRecord = await myStore.read(searchCriteria);
 
+  // TODO: something here causes 'Maximum recursive updates exceeded'
   props.options.children.forEach((eachProp) => {
     let eachCopy = {};
     Object.assign(eachCopy, eachProp || {});
@@ -47,8 +49,27 @@ async function getUpdateRecord(searchCriteria) {
 
 getUpdateRecord(searchCriteria);
 
-function submitHandler(e) {
-  console.log('storeRecord', e);
+async function submitHandler(e) {
+  const updateRecord = [];
+  errorMessages.value.length = 0;
+
+  Array.from(e.target.elements).forEach((eachField) => {
+    if (eachField.id) {
+      updateRecord[eachField.id] = eachField.value;
+    }
+  });
+
+  try {
+    await myStore.update(updateRecord);
+    if (props.options.updateOptions?.successRedirect) {
+      router.push(props.options.updateOptions.successRedirect);
+    }
+  } catch (err) {
+    // trigger error message display
+    if (err?.errors.length > 0) {
+      errorMessages.value = err.errors;
+    }
+  }
 }
 </script>
 

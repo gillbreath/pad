@@ -23,6 +23,7 @@ if (mainPad.dataEntities) {
           const validatePromise = new Promise((resolve, reject) => {
             const failedValidationMessages = this.isValid(record);
             if (failedValidationMessages.length === 0) {
+              // TODO: handle errors from update
               this.collection.push(record);
               return resolve();
             }
@@ -54,7 +55,21 @@ if (mainPad.dataEntities) {
 
           return findPromise;
         },
+        update(updateRecord) {
+          const updatePromise = new Promise((resolve, reject) => {
+            const updateIndex = this.collection.findIndex(e => e.primarykey === updateRecord.primarykey);
+
+            if (updateIndex < 0) reject('primarykey not found');
+
+            // TODO: handle errors from update
+            this.collection[updateIndex] = { ...this.collection[updateIndex], ...updateRecord };
+            resolve(this.collection[updateIndex]);
+          });
+
+          return updatePromise;
+        },
         delete(index) {
+          // TODO: change to primarykey
           this.collection.splice(index, 1);
         },
         isValid(record) {
