@@ -1,7 +1,7 @@
 <script setup>
 import PadRenderer from '@/components/PadRenderer.vue';
 import InputField from './InputField.vue';
-const props = defineProps({
+defineProps({
   fieldSchema: Object,
   dataEntityTemplate: Object
 });
