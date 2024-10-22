@@ -1,6 +1,6 @@
 const dataEntities = {
-  logins: {
-    singularName: 'login',
+  mockLogins: {
+    singularName: 'Mock login',
     fields: {
       username: {
         dataType: 'email',
@@ -34,6 +34,13 @@ const dataEntities = {
         ]
       },
       lastName: {
+        validations: [
+          'notEmpty'
+        ]
+      },
+      username: {
+        dataType: 'email',
+        foreignkey: 'mockLogins.username',
         validations: [
           'notEmpty'
         ]
@@ -85,7 +92,7 @@ const pageRoutes = {
             innerHtml: 'New user?'
           }
         ],
-        dataEntityKey: 'logins',
+        dataEntityKey: 'mockLogins',
         renderType: 'find',
         findOptions: {
           successRedirect: '/home'
@@ -100,14 +107,14 @@ const pageRoutes = {
       {
         elementType: 'routerLink',
         class: 'button',
-        innerHtml: 'ANIMAL INVENTORY',
-        to: '/animals'
+        innerHtml: 'PEOPLE LIST',
+        to: '/people'
       },
       {
         elementType: 'routerLink',
         class: 'button',
-        innerHtml: 'ADD AN ANIMAL',
-        to: '/animals/create'
+        innerHtml: 'ADD A PERSON',
+        to: '/people/create'
       },
     ]
   },
@@ -116,7 +123,7 @@ const pageRoutes = {
     children: [
       {
         elementType: 'dataEntity',
-        dataEntityKey: 'logins',
+        dataEntityKey: 'mockLogins',
         children: [
           {
             elementType: 'p',
@@ -154,7 +161,7 @@ const pageRoutes = {
       },
       {
         elementType: 'dataEntity',
-        dataEntityKey: 'logins',
+        dataEntityKey: 'mockLogins',
         children: [
           {
             elementType: 'formField',
@@ -225,7 +232,7 @@ const pageRoutes = {
             }
           }
         ],
-        dataEntityKey: 'logins',
+        dataEntityKey: 'mockLogins',
         renderType: 'create',
         createOptions: {
           successRedirect: '/'
@@ -236,7 +243,7 @@ const pageRoutes = {
   },
 };
 const padOptions = {
-  appName: 'Transports',
+  appName: 'Example',
   layouts: {
     DefaultLayout: {
       header: [{
@@ -248,7 +255,7 @@ const padOptions = {
               text: 'home'
             },
             {
-              routerLink: '/animals/create',
+              routerLink: '/people/create',
               text: 'add'
             },
             {
