@@ -7,13 +7,14 @@
     "build": "vite build",
     "clean": "npm run format && npm run lint",
     "dev": "npm run format && npm run test:e2e:dev",
+    "format": "prettier --write src/",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
     "preview": "vite preview",
+    "start": "vite build && vite preview",
     "test:unit": "vitest",
     "test:e2e": "start-server-and-test preview http://localhost:4173 'cypress run --e2e'",
     "test:e2e:dev": "start-server-and-test 'vite dev --port 4173' http://localhost:4173 'cypress open --e2e'",
-    "test:cmpnt:dev": "start-server-and-test 'vite dev --port 4173' http://localhost:4173 'cypress open --component'",
-    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
-    "format": "prettier --write src/"
+    "test:cmpnt:dev": "start-server-and-test 'vite dev --port 4173' http://localhost:4173 'cypress open --component'"
   },
   "dependencies": {
     "pinia": "^2.1.7",

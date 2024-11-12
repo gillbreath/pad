@@ -1,11 +1,12 @@
 {
-  "name": "padjs",
+  "name": "gillbreath-pad",
   "version": "0.0.0",
   "description": "Portable Application Definition",
-  "main": "main.js",
+  "main": "copyFiles.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/gillbreath/pad.git"
@@ -20,7 +21,7 @@
     "development",
     "rad"
   ],
-  "author": "Elias Carlston",
+  "author": "Elias Carlston for gillbreath",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/gillbreath/pad/issues"
