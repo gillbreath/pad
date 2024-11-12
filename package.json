@@ -1,6 +1,6 @@
 {
   "name": "gillbreath-pad",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Portable Application Definition",
   "main": "copyFiles.js",
   "scripts": {
