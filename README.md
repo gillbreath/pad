@@ -55,10 +55,27 @@ Contribute to the framework by joining our social impact project. Fill out this 
 
 ## Features
 - `dataEntities`
-  - data described here will automatically get CRUD functionality, routes & forms
-  - data entities can also be automatically be rendered as tables or ULs
+  - each property of this object is an object describing a data entity (DE)
+  - DEs will eventually have support comparable to Rails' model & migration
+  - `fields` property is an object
+    - `dataType`. Will eventually support explicit database types, like `varchar-[length]`; and also implicit/semantic types, like `email` or `short-text`. Any value currently unsupported gets treated as `text`.
+    - `validations`: an array of aliases corresponding to vanilla JS functions, which can run client- or server-side.
+    - `inputHint` and `defaultValue` behave as expected
+    - `preLoad` data to populate entities on load. Temporary / convenience functionality, will eventually be replaced by offline-first local storage + optimistic fetching.
 - `pageRoutes`
-  - describe non-data functionality here
+  - describe client-side behavior. The concept of a "page" corresponds to a "screen" in a mobile app.
+  - `path` dynamically registers as client-side URLs
+  - `children` describes "page" contents, recursively. Can be low, DOM-level elements, or high level, like composable widgets and data renderers. Some current element types:
+    - `dataEntity`: automatically renders a PAD dataEntity in a common format, like a table or link list
+    - `routerLink`: name is specific to web tech, but represents the concept of a link that stays within the app as opposed to a hyperlink
+- `padOptions`
+  - config that doesn't fit the other two categories
+  - `appName` lives here
+  - `layouts`
+    - arbitrary header and footer elements which wrap around dynamic content
+    - follows the same page content API as `children` under `pageRoutes`
+    - `children` from `pageRoutes` can control via `updateDynamicLayout` event
+    - name the most common layout in your app `DefaultLayout`, change to other layouts as desired
 
 ## Lead maintainer
 The lead maintainer at this time is Elias Carlston. His email is elias@eliascarlston.com.
