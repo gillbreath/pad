@@ -1,3 +1,4 @@
+import { inject } from 'vue';
 import PadRenderer from '../components/PadRenderer.vue';
 import constants from '../constants.js';
 import CrudCreate from '../components/DataEntity/CrudCreate.vue';
@@ -127,6 +128,17 @@ export default {
     const [pageRouteKey, pageRouteValue] = pageRoute;
     return {
       path: pageRouteValue.path || '/' + pageRouteKey,
+      beforeEnter: (to, from) => {
+        if (pageRouteValue.beforeRouteEnter) {
+          const globalStores = inject('$globalStores')
+          const redirectPath = pageRouteValue.beforeRouteEnter(to, from, globalStores);
+          if (redirectPath) {
+            return {
+              path: redirectPath
+            };
+          }
+        }
+      },
       component: PadRenderer,
       props: {
         elementsArray: pageRouteValue.children,

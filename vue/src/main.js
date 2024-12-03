@@ -9,6 +9,7 @@ import { createPinia } from 'pinia';
 import App from './App.vue';
 import router from './router';
 import useGlobalStores from './stores/GlobalStores.js';
+import { provide } from 'vue';
 
 const app = createApp(App);
 const pinia = createPinia();
@@ -22,5 +23,6 @@ Object.entries(useGlobalStores).forEach((eachStore) => {
   globalStores[eachStoreKey] = eachStoreValue();
 });
 app.config.globalProperties.$globalStores = globalStores;
+app.provide('$globalStores', globalStores);
 
 app.mount('#app');
