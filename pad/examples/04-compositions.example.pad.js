@@ -3,28 +3,7 @@ import composedPageRoutes from '../compositions/pageRoutes.js';
 
 const dataEntities = {
   mockLogins: composedDataEntities.mockLogins,
-  people: {
-    singularName: 'person',
-    fields: {
-      firstName: {
-        validations: [
-          'notEmpty'
-        ]
-      },
-      lastName: {
-        validations: [
-          'notEmpty'
-        ]
-      },
-      username: {
-        dataType: 'email',
-        foreignkey: 'mockLogins.username',
-        validations: [
-          'notEmpty'
-        ]
-      },
-    }
-  }
+  profiles: composedDataEntities.profiles
 };
 
 composedPageRoutes.mockLogins.loginForm.path = '/';

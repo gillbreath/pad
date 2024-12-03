@@ -25,4 +25,28 @@ export default {
       }
     }
   },
+  profiles: {
+    fields: {
+      avatar: {
+        dataType: 'photo'
+      },
+      firstName: {
+        validations: [
+          'notEmpty'
+        ]
+      },
+      lastName: {
+        validations: [
+          'notEmpty'
+        ]
+      },
+      username: {
+        dataType: 'email',
+        foreignkey: 'mockLogins.username',
+        validations: [
+          'notEmpty'
+        ]
+      },
+    }
+  }
 };
