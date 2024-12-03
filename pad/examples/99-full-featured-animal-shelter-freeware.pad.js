@@ -1,4 +1,9 @@
+import composedDataEntities from '../compositions/dataEntities.js';
+import composedPageRoutes from '../compositions/pageRoutes.js';
+
 const dataEntities = {
+  mockLogins: composedDataEntities.mockLogins,
+  profiles: composedDataEntities.profiles,
 	animalBreeds: {
     fields: {
       animalFK:{
@@ -223,36 +228,6 @@ const dataEntities = {
       },
     },
 	},
-	people: {
-    singularName: 'person',
-    fields: {
-      person_name:{
-        dataType: 'varchar-128',
-        required: true,
-      },
-      title:{
-        dataType: 'varchar-64',
-      },
-      email:{
-        dataType: 'varchar-128',
-      },
-      mockLoginFK:{
-        dataType: 'foreignKey',
-      },
-      personTypeFK:{
-        dataType: 'foreignKey',
-      },
-    },
-	},
-	peopleTypes: {
-    singularName: 'people type',
-    fields: {
-      type_name:{
-        dataType: 'varchar-64',
-        required: true,
-      },
-    },
-	},
 	statuses: {
     singularName: 'status',
     fields: {
@@ -365,73 +340,32 @@ const dataEntities = {
 	},
 };
 
+composedPageRoutes.mockLogins.loginForm.path = '/';
+
 const pageRoutes = {
-  root: {
-    path: '/',
-    children: [
-      {
-        elementType: 'dataEntity',
-        children: [
-          {
-            elementType: 'p',
-            class: 'tagline',
-            innerHtml: 'Lorem ipsum odor amet, consectetuer adipiscing elit.'
-          },
-          {
-            elementType: 'formField',
-            options: {
-              type: 'input',
-              name: 'username'
-            }
-          },
-          {
-            elementType: 'formField',
-            options: {
-              type: 'input',
-              name: 'password'
-            }
-          },
-          {
-            elementType: 'routerLink',
-            to: '/forgot-password',
-            innerHtml: 'Forgot password',
-          },
-          {
-            elementType: 'formControl',
-            options: {
-              type: 'submit',
-              buttonText: 'SIGN IN',
-            }
-          },
-          {
-            elementType: 'routerLink',
-            to: '/new-user',
-            innerHtml: 'New user?'
-          }
-        ],
-        dataEntityKey: 'mockLogins',
-        renderType: 'find',
-        findOptions: {
-          successRedirect: '/home'
-        }
-      },
-    ],
-    layout: 'LoggedOutLayout'
-  },
+  forgotPassword: composedPageRoutes.mockLogins.forgotPassword,
+  newUser: composedPageRoutes.mockLogins.newUser,
+  resetPassword: composedPageRoutes.mockLogins.resetPassword,
+  root: composedPageRoutes.mockLogins.loginForm,
   home: {
     path: '/home',
+    beforeRouteEnter: (to, from, data) => {
+      if (data.profiles.collection.length === 0) {
+        return '/profiles/create';
+      }
+    },
     children: [
       {
         elementType: 'routerLink',
         class: 'button',
-        innerHtml: 'PEOPLE LIST',
-        to: '/people'
+        innerHtml: 'ANIMAL INVENTORY',
+        to: '/animals'
       },
       {
         elementType: 'routerLink',
         class: 'button',
-        innerHtml: 'ADD A PERSON',
-        to: '/people/create'
+        innerHtml: 'ADD AN ANIMAL',
+        to: '/animals/create'
       },
     ]
   },
@@ -573,7 +507,7 @@ const padOptions = {
               text: 'home'
             },
             {
-              routerLink: '/people/create',
+              routerLink: '/animals/create',
               text: 'add'
             },
             {
