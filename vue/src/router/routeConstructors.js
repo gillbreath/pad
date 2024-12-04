@@ -130,7 +130,7 @@ export default {
       path: pageRouteValue.path || '/' + pageRouteKey,
       beforeEnter: (to, from) => {
         if (pageRouteValue.beforeRouteEnter) {
-          const globalStores = inject('$globalStores')
+          const globalStores = inject('$globalStores');
           const redirectPath = pageRouteValue.beforeRouteEnter(to, from, globalStores);
           if (redirectPath) {
             return {
