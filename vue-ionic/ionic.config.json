@@ -1,0 +1,7 @@
+{
+  "name": "pad-ionic",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue-vite"
+}
