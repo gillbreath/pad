@@ -82,7 +82,7 @@ const appPages = [
   },
   {
     title: 'Picture',
-    url: '/folder/Favorites',
+    url: '/picture',
     iosIcon: heartOutline,
     mdIcon: heartSharp,
   },

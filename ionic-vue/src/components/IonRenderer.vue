@@ -7,6 +7,7 @@ import LoopKey from '../loopKey.js';
 import { onMounted, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import { IonNote } from '@ionic/vue';
+import Picture from './Picture.vue';
 
 const route = useRoute();
 const emit = defineEmits(['updateDynamicLayout']);
@@ -57,6 +58,7 @@ props.elementsArray.forEach((e) => {
       :options="eachEl.options"
     />
     <DataRenderer v-if="eachEl.elementType === 'dataEntity'" :options="eachEl" />
+    <Picture v-if="eachEl.elementType === 'picture'" :options="eachEl" />
     <ElementRenderer v-else :single-element="eachEl" />
   </template>
       </div>
