@@ -1,5 +1,6 @@
 <template>
   <ion-app>
+    <ion-page>
       <ion-menu side="end" content-id="main-content" type="overlay">
         <ion-content>
           <ion-list id="inbox-list">
@@ -24,24 +25,48 @@
           </ion-list>
         </ion-content>
       </ion-menu>
-      <ion-router-outlet id="main-content"></ion-router-outlet>
+      <ion-header :translucent="true">
+        <ion-toolbar>
+          <ion-title>Animal Shelter Name</ion-title>
+          <ion-buttons slot="end">
+            <ion-menu-button color="primary"></ion-menu-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content :fullscreen="true" id="main-content">
+        <ion-header collapse="condense">
+          <ion-toolbar>
+            <ion-title size="large">{{ $route.params.id }}</ion-title>
+          </ion-toolbar>
+        </ion-header>
+
+        <ion-router-outlet></ion-router-outlet>
+      </ion-content>
+    </ion-page>
   </ion-app>
 </template>
 
 <script setup>
+import mainPad from '../../main.pad.js';
 import {
   IonApp,
+  IonButtons, 
   IonContent,
+  IonHeader,
   IonIcon,
   IonItem,
   IonLabel,
   IonList,
   IonListHeader,
   IonMenu,
+  IonMenuButton,
   IonMenuToggle,
   IonNote,
+IonPage,
   IonRouterOutlet,
   IonSplitPane,
+  IonTitle,
+IonToolbar
 } from '@ionic/vue';
 import { ref } from 'vue';
 import {
