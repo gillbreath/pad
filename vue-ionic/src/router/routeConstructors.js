@@ -1,5 +1,5 @@
 import { inject } from 'vue';
-import PadRenderer from '../components/PadRenderer.vue';
+import IonRenderer from '../components/IonRenderer.vue';
 import constants from '../constants.js';
 import CrudCreate from '../components/DataEntity/CrudCreate.vue';
 import CrudRead from '../components/DataEntity/CrudRead.vue';
@@ -62,7 +62,7 @@ export default {
     list: (dataEntityKey) => {
       return {
         path: constants.dataEntityPath + dataEntityKey,
-        component: PadRenderer,
+        component: IonRenderer,
         props: {
           elementsArray: [
             {
@@ -139,7 +139,7 @@ export default {
           }
         }
       },
-      component: PadRenderer,
+      component: IonRenderer,
       props: {
         elementsArray: pageRouteValue.children,
         layout: pageRouteValue.layout || 'DefaultLayout'

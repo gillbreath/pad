@@ -1,4 +1,5 @@
 <script setup>
+import { IonInput } from '@ionic/vue';
 const props = defineProps({
   fieldName: String,
   inputValue: String,
@@ -9,12 +10,14 @@ myModel.value = props.inputValue;
 </script>
 
 <template>
-  <input
+  <ion-input
     :id="fieldName"
     :list="dataEntityTemplate?.[fieldName]?.dataListSuggestions ? fieldName + 'DataList' : ''"
     :placeholder="dataEntityTemplate?.[fieldName]?.inputHint || fieldName"
     :type="dataEntityTemplate?.[fieldName]?.dataType || 'text'"
     v-model="myModel"
+    label-placement="stacked"
+    :label="fieldName"
   />
   <datalist
     v-if="dataEntityTemplate?.[fieldName]?.dataListSuggestions"

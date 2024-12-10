@@ -1,48 +1,22 @@
 <template>
   <ion-app>
-    <ion-page>
-      <ion-menu side="end" content-id="main-content" type="overlay">
+    <ion-split-pane content-id="main-content">
+      <ion-menu content-id="main-content" type="overlay">
         <ion-content>
           <ion-list id="inbox-list">
-            <ion-list-header>Inbox</ion-list-header>
-            <ion-note>hi@ionicframework.com</ion-note>
+            <ion-list-header>Menu</ion-list-header>
+            <ion-note>(menu note)</ion-note>
 
             <ion-menu-toggle :auto-hide="false" v-for="(p, i) in appPages" :key="i">
               <ion-item @click="selectedIndex = i" router-direction="root" :router-link="p.url" lines="none" :detail="false" class="hydrated" :class="{ selected: selectedIndex === i }">
-                <ion-icon aria-hidden="true" slot="start" :ios="p.iosIcon" :md="p.mdIcon"></ion-icon>
                 <ion-label>{{ p.title }}</ion-label>
               </ion-item>
             </ion-menu-toggle>
           </ion-list>
-
-          <ion-list id="labels-list">
-            <ion-list-header>Labels</ion-list-header>
-
-            <ion-item v-for="(label, index) in labels" lines="none" :key="index">
-              <ion-icon aria-hidden="true" slot="start" :ios="bookmarkOutline" :md="bookmarkSharp"></ion-icon>
-              <ion-label>{{ label }}</ion-label>
-            </ion-item>
-          </ion-list>
         </ion-content>
       </ion-menu>
-      <ion-header :translucent="true">
-        <ion-toolbar>
-          <ion-title>Animal Shelter Name</ion-title>
-          <ion-buttons slot="end">
-            <ion-menu-button color="primary"></ion-menu-button>
-          </ion-buttons>
-        </ion-toolbar>
-      </ion-header>
-      <ion-content :fullscreen="true" id="main-content">
-        <ion-header collapse="condense">
-          <ion-toolbar>
-            <ion-title size="large">{{ $route.params.id }}</ion-title>
-          </ion-toolbar>
-        </ion-header>
-
-        <ion-router-outlet></ion-router-outlet>
-      </ion-content>
-    </ion-page>
+      <ion-router-outlet id="main-content"></ion-router-outlet>
+    </ion-split-pane>
   </ion-app>
 </template>
 
@@ -89,40 +63,34 @@ import {
 const selectedIndex = ref(0);
 const appPages = [
   {
-    title: 'Inbox',
-    url: '/folder/Inbox',
+    title: 'Home',
+    url: '/home',
     iosIcon: mailOutline,
     mdIcon: mailSharp,
   },
   {
-    title: 'Outbox',
-    url: '/folder/Outbox',
+    title: 'Animals',
+    url: '/animals',
+    iosIcon: mailOutline,
+    mdIcon: mailSharp,
+  },
+  {
+    title: 'New animal',
+    url: '/animals/create',
     iosIcon: paperPlaneOutline,
     mdIcon: paperPlaneSharp,
   },
   {
-    title: 'Favorites',
+    title: 'Picture',
     url: '/folder/Favorites',
     iosIcon: heartOutline,
     mdIcon: heartSharp,
   },
   {
-    title: 'Archived',
-    url: '/folder/Archived',
-    iosIcon: archiveOutline,
-    mdIcon: archiveSharp,
-  },
-  {
-    title: 'Trash',
-    url: '/folder/Trash',
-    iosIcon: trashOutline,
-    mdIcon: trashSharp,
-  },
-  {
-    title: 'Spam',
-    url: '/folder/Spam',
-    iosIcon: warningOutline,
-    mdIcon: warningSharp,
+    title: 'Logout',
+    url: '/',
+    iosIcon: heartOutline,
+    mdIcon: heartSharp,
   },
 ];
 const labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];

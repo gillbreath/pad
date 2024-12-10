@@ -15,13 +15,13 @@ import '@ionic/vue/css/normalize.css';
 import '@ionic/vue/css/structure.css';
 import '@ionic/vue/css/typography.css';
 
-/* Optional CSS utils 
 import '@ionic/vue/css/padding.css';
 import '@ionic/vue/css/float-elements.css';
 import '@ionic/vue/css/text-alignment.css';
 import '@ionic/vue/css/text-transformation.css';
 import '@ionic/vue/css/flex-utils.css';
 import '@ionic/vue/css/display.css';
+/* Optional CSS utils 
 dark mode:
 import '@ionic/vue/css/palettes/dark.always.css';
 import '@ionic/vue/css/palettes/dark.class.css';
