@@ -350,9 +350,11 @@ const pageRoutes = {
   home: {
     path: '/home',
     beforeRouteEnter: (to, from, data) => {
+      /*
       if (data.profiles.collection.length === 0) {
         return '/profiles/create';
       }
+      */
     },
     children: [
       {
@@ -492,6 +494,14 @@ const pageRoutes = {
     ],
     layout: 'LoggedOutLayout'
   },
+  picture: {
+    path: '/picture',
+    children: [
+      {
+        elementType: 'picture',
+      },
+    ]
+  }
 };
 
 const padOptions = {
